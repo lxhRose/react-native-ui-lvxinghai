@@ -1,11 +1,20 @@
 {
     "name": "react-native-radiogroup-lxh",
-    "version": "2.0.9",
+    "version": "2.1.0",
     "description": "react-native-RadioGroup",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lxhRose/react-native-radiogroup.git"
+    },
+    "keywords": [
+        "react-native",
+        "react-native-RadioGroup",
+        "react-native-radiogroup-lxh"
+    ],
     "author": "lvxinghai",
     "license": "ISC"
 }
