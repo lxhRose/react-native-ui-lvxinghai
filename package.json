@@ -1,0 +1,11 @@
+{
+    "name": "react-native-radiogroup-lxh",
+    "version": "2.0.9",
+    "description": "react-native-RadioGroup",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "lvxinghai",
+    "license": "ISC"
+}
