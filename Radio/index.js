@@ -12,7 +12,6 @@ export default class Radio extends Component {
         super(props);
         this.state = {
             labelFlex: 0,
-            checked: false
         }
         this.rowRef = null;
     }
@@ -46,6 +45,7 @@ export default class Radio extends Component {
         } = this.props;
 
         const { labelFlex } = this.state;
+
         return React.createElement(TouchableOpacity,
             {
                 ref: rowRef => { this.rowRef = rowRef },
@@ -55,7 +55,7 @@ export default class Radio extends Component {
             <View style={{ flex: 1, flexDirection: "row" }}>
                 <View style={{ flex: 1 }}>
                     <View style={styles.Radio}>
-                        {checked === id && <Text style={styles.circle}></Text>}
+                        {checked && <Text style={styles.circle}></Text>}
                     </View>
                 </View>
                 <View style={{ flex: labelFlex }}>

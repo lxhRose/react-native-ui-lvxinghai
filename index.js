@@ -1,6 +1,3 @@
-// 如果要分组横向排列就使用option=[[{id: "", label: "", flex: 1}, ...], [{id: "", label: ""}, ...]]
-// 如果直接竖直排列，option = [{id: "", label: "", flex: 1}, ...]
-// 支持设置Radio的flex
 import React, { Component } from 'react';
 import {
     StyleSheet,
@@ -12,8 +9,7 @@ export default class RadioGroup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            labelFlex: 0,
-            checked: ''
+            checked: this.props.defaultChecked ? this.props.defaultChecked : ''
         }
     }
 
@@ -57,7 +53,7 @@ export default class RadioGroup extends Component {
                                         },
                                         <Radio
                                             id={child.id}
-                                            checked={checked}
+                                            checked={checked.toString() === child.id.toString()}
                                             onChange={this.onChange}
                                             label={child.label} />
                                     );
@@ -72,7 +68,7 @@ export default class RadioGroup extends Component {
                             },
                             <Radio
                                 id={item.id}
-                                checked={checked}
+                                checked={checked.toString() === item.id.toString()}
                                 onChange={this.onChange}
                                 label={item.label} />
                         );
