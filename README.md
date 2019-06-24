@@ -1,6 +1,8 @@
-1、安装：npm i react-native-radiogroup-lxh；  
+简介：这是一套基于React-native的组件库，可以根据自己的需求导入需要使用的组件：  
+1、安装：npm i react-native-ui-lvxinghai    
 2、使用：  
-import RadioGroup from "react-native-radiogroup-lxh";  
+一：RadioGroup组件：  
+import {RadioGroup} from "react-native-radiogroup-lxh";  
 <RadioGroup  
     defaultChecked="bcl"  
     onChange={this.onChange}  

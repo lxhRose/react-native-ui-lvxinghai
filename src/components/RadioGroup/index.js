@@ -3,7 +3,7 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
-import Radio from "./Radio/index";
+import Radio from "./../Radio/index";
 
 export default class RadioGroup extends Component {
     constructor(props) {

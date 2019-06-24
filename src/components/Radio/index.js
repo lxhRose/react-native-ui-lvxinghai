@@ -5,7 +5,7 @@ import {
     View,
     TouchableOpacity
 } from 'react-native';
-import adap from './../adaptation';
+import adap from './../../utils/adaptation';
 
 export default class Radio extends Component {
     constructor(props) {

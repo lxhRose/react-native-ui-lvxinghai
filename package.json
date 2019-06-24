@@ -1,20 +1,26 @@
 {
-    "name": "react-native-radiogroup-lxh",
-    "version": "2.1.2",
+    "name": "react-native-ui-lvxinghai",
+    "version": "2.2.1",
     "description": "react-native-RadioGroup",
-    "main": "index.js",
+    "main": "src/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/lxhRose/react-native-radiogroup.git"
+        "url": "https://github.com/lxhRose/react-native-ui-lvxinghai.git"
     },
     "keywords": [
         "react-native",
-        "react-native-RadioGroup",
-        "react-native-radiogroup-lxh"
+        "react-native-ui",
+        "react-native-ui-lvxinghai",
+        "Radio",
+        "RadioGroup",
+        "Button"
     ],
     "author": "lvxinghai",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "prop-types": "^15.7.2"
+    }
 }
