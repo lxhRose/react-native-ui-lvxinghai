@@ -2,7 +2,7 @@ react-native-ui-lvxinghai
 ===
 简介：  
 ---
-这是一套基于React-native的组件库，可以根据自己的需求导入需要使用的组件：
+这是一套基于React-native的组件库，你可以根据自己的需求导入需要使用的组件  
   
 安装：  
 ---
@@ -10,7 +10,7 @@ npm i react-native-ui-lvxinghai
   
 使用：  
 ---
-一：RadioGroup组件：  
+一、RadioGroup组件  
 ---
 ![RadioGroup](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/RadioGroup.png)  
 
