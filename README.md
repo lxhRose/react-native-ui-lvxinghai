@@ -12,7 +12,7 @@ npm i react-native-ui-lvxinghai
 ---
 Radio
 ---
-![Radio-img]()  
+![Radio-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Radio.png)  
 ```js
 <Radio
   defaultChecked={false}
