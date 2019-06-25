@@ -2,7 +2,7 @@
 1、安装：npm i react-native-ui-lvxinghai    
 2、使用：  
 一：RadioGroup组件：  
-import {RadioGroup} from "react-native-radiogroup-lxh";  
+import {RadioGroup} from "react-native-ui-lvxinghai";  
 <RadioGroup  
     defaultChecked="bcl"  
     onChange={this.onChange}  
