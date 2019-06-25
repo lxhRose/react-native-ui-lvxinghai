@@ -4,6 +4,7 @@ import {
     View,
 } from 'react-native';
 import Radio from "./../Radio/index";
+import PropTypes from 'prop-types';
 
 export default class RadioGroup extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ export default class RadioGroup extends Component {
 
         return React.createElement(View,
             {
-                style: { flex: 1, ...this.props.style }
+                style: { ...styles.RadioGroup, ...this.props.style }
             },
             <>
                 {option.map((item, index) => {
@@ -80,9 +81,20 @@ export default class RadioGroup extends Component {
 }
 
 const styles = StyleSheet.create({
+    RadioGroup: {
+        width: 200,
+        height: 100,
+    },
     Row: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center'
     }
 });
+
+RadioGroup.propTypes = {
+    onChange: PropTypes.func,
+    option: PropTypes.array.isRequired,
+    defaultChecked: PropTypes.string,
+    style: PropTypes.object,
+};

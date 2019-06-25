@@ -1,0 +1,26 @@
+{
+    "name": "react-native-ui-lvxinghai",
+    "version": "2.2.2",
+    "description": "react-native-ui",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lxhRose/react-native-ui-lvxinghai.git"
+    },
+    "keywords": [
+        "react-native",
+        "react-native-ui",
+        "react-native-ui-lvxinghai",
+        "Radio",
+        "RadioGroup",
+        "Button"
+    ],
+    "author": "lvxinghai",
+    "license": "ISC",
+    "dependencies": {
+        "prop-types": "^15.7.2"
+    }
+}
