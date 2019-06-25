@@ -10,7 +10,7 @@ npm i react-native-ui-lvxinghai
   
 使用：  
 ---
-一、RadioGroup组件  
+RadioGroup  
 ---
 ![RadioGroup-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/RadioGroup.png)  
 
@@ -64,7 +64,7 @@ option = [
 ```  
 支持设置Radio的flex。  
   
-二、Button  
+Button   
 ---
 ![RadioGroup-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Button.png)  
 ```js
