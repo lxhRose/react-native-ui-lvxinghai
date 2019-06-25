@@ -62,7 +62,7 @@ option = [
     { id: '4', label: '慢性变化无需处理', flex: 1 },  
 ]  
 ```  
-支持设置Radio的flex。  
+支持设置Radio的flex，但它并不是必须的。  
   
 Button   
 ---
