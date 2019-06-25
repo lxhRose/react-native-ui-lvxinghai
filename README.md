@@ -36,10 +36,10 @@ import {RadioGroup} from "react-native-ui-lvxinghai";
 ```
    
 属性：  
+* option（Array）：必选。配置，具体如下：  
 * defaultChecked（string）：可选。默认选中项的id;  
 * onChange（function）：可选。发生改变时的回调函数，返回值是选中的Radio id值；   
 * style（object）：可选。样式属性，暂时只支持设置包裹层样式；  
-* option（Array）：必选。配置，具体如下： 
     
 如果要分组横向排列就使用   
 ```js
