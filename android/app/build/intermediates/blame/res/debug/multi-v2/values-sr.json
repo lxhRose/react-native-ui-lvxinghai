@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\mySelf\\reactnativeuilvxinghai\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sr\\values-sr.xml",
+            "outputFile": "D:\\mySelf\\react-native-ui-lvxinghai\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sr\\values-sr.xml",
             "map": [
                 {
                     "source": "C:\\Users\\81492\\.gradle\\caches\\transforms-2\\files-2.1\\c84c6fdacdd49f2bce6e6451a0e5b230\\res\\values-sr\\values-sr.xml",
