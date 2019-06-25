@@ -109,7 +109,7 @@ horizontal
   horizontal />
   ```
   属性：
-  * head(Array)：表头信息,其中flex和width为可选参数，默认值flex=1, width=100；当horizontal = false时,flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
+  * head(Array)：表头信息，其中flex和width为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
   * data（Array）：数据，注意数据字段名称与表头id一一对应；  
   * style（obj）：表格样式；  
   * otherStyle（obj）：表内其他部分样式，分别对应headStyle：表头，headTextStyle：表头文字，表格内容：bodyStyle，表格行：bodyRowStyle，表格文字：bodyTextStyle；  
