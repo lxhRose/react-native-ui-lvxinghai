@@ -12,27 +12,27 @@ npm i react-native-ui-lvxinghai
 ---
 一、RadioGroup组件  
 ---
-![RadioGroup](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/RadioGroup.png)  
+![RadioGroup-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/RadioGroup.png)  
 
 ```js
 import {RadioGroup} from "react-native-ui-lvxinghai";   
 <RadioGroup
-    defaultChecked="1"
-    onChange={(checked) => { alert(checked) }}
-    option={[
-        [
-            { id: '1', label: '不处理' },
-            { id: '2', label: '继续观察' },
-        ], [
-            { id: '3', label: '已处理' },
-            { id: '4', label: '慢性变化无需处理' },
-        ]
-    ]}
-    style={{
-        padding: 20,
-        width: 200,
-        height: 100,
-    }} />  
+  defaultChecked="1"
+  onChange={(checked) => { alert(checked) }}
+  option={[
+    [
+      { id: '1', label: '不处理' },
+      { id: '2', label: '继续观察' },
+    ], [
+      { id: '3', label: '已处理' },
+      { id: '4', label: '慢性变化无需处理' },
+    ]
+  ]}
+  style={{
+    padding: 20,
+    width: 200,
+    height: 100,
+  }} />  
 ```
    
 属性：  
@@ -63,3 +63,15 @@ option = [
 ]  
 ```  
 支持设置Radio的flex。  
+  
+二、Button  
+---
+![RadioGroup-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Button.png)  
+```js
+<Button
+  text="确认"
+  onPress={() => { }}
+  style={{ width: 100, margin: 10 }}
+  textStyle={{ color: "#333" }} />
+```
+  
