@@ -14,21 +14,23 @@ npm i react-native-ui-lvxinghai
 ---
 ![RadioGroup](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/RadioGroup.png)  
 
-<font color=CornflowerBlue>import {RadioGroup} from "react-native-ui-lvxinghai";</font>  
+```js
+import {RadioGroup} from "react-native-ui-lvxinghai";   
 <RadioGroup  
 defaultChecked="bcl"  
 onChange={this.onChange}  
 option={this.Radio_Option}  
 style={{ marginTop: adap.h(27) }} />  
+```
    
-属性：
+属性：  
 defaultChecked（string）：默认选中项的id;  
 onChange（function）：发生改变时的回调函数，返回值是选中的Radio id值；   
 style（object）：样式属性，暂时只支持设置包裹层样式；  
 option（Array）：配置，具体如下： 
     
 如果要分组横向排列就使用   
-
+```json
 option=[  
 [  
 {id: "radio_1", label: "单选按钮一", flex: 1},  
@@ -41,14 +43,15 @@ option=[
 {id: "radio_6", label: "单选按钮六", flex: 1},  
 , ...  
 ]    
-]  
+]  ```
   
 如果直接竖直排列，  
+```json
 option = [  
 {id: "radio_1", label: "单选按钮一", flex: 1},  
 {id: "radio_2", label: "单选按钮二", flex: 1},  
 {id: "radio_3", label: "单选按钮三", flex: 1},  
  ...  
-]  
+]  ```
   
 支持设置Radio的flex。  
