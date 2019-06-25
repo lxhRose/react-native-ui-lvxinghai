@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {
     RadioGroup,
-    Button
+    Button,
+    Table
 } from "./src/index";
 
 export default class App extends Component {
@@ -37,6 +38,26 @@ export default class App extends Component {
                     onPress={() => { }}
                     style={{ width: 100, margin: 10 }}
                     textStyle={{ color: "#333" }} />
+                <Text>Table：</Text>
+                <Table
+                    head={[
+                        { id: 'hldj', name: '护理等级', flex: 1, width: 300 },
+                        { id: 'cwhz', name: '床位患者', flex: 5, width: 300 },
+                        { id: 'js', name: '计数', flex: 1 },
+                    ]}
+                    data={[
+                        { hldj: 1, cwhz: 2, js: 3 },
+                        { hldj: 1, cwhz: 2, js: 3 },
+                        { hldj: 1, cwhz: 2, js: 3 },
+                    ]}
+                    style={{ width: 800, height: 550 }}
+                    otherStyle={{
+                        headStyle: { height: 50 },
+                        headTextStyle: { width: 200 },
+                        bodyStyle: { height: 500 },
+                        bodyRowStyle: { height: 50 },
+                        bodyTextStyle: { color: '#333' }
+                    }} />
             </View>
         );
     }
