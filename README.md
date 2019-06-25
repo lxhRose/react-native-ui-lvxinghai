@@ -12,7 +12,7 @@ npm i react-native-ui-lvxinghai
 ---
 一：RadioGroup组件：  
 ---
-![Image text](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/RadioGroup.png)  
+![RadioGroup](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/RadioGroup.png)  
 import {RadioGroup} from "react-native-ui-lvxinghai";  
 <RadioGroup  
 defaultChecked="bcl"  
