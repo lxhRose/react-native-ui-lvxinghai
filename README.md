@@ -74,4 +74,45 @@ Button
   style={{ width: 100, margin: 10 }}
   textStyle={{ color: "#333" }} />
 ```
+属性：  
+* text（string）：按钮名称；  
+* onPress（function）：点击按钮触发的事件；  
+* style（obj）：按钮样式；  
+* textStyle（obj）：按钮文字样式。  
+  
+Table
+---
+default  
+![Table-img]()
+horizontal  
+![Table-horizontal-img]()
+```js
+<Table
+  head={[
+    { id: 'hldj', name: '护理等级', flex: 1, width: 300 },
+    { id: 'cwhz', name: '床位患者', flex: 5, width: 300 },
+    { id: 'js', name: '计数', flex: 1 },
+  ]}
+  data={[
+    { hldj: 1, cwhz: 2, js: 3 },
+    { hldj: 1, cwhz: 2, js: 3 },
+    { hldj: 1, cwhz: 2, js: 3 },
+  ]}
+  style={{ width: 800, height: 550 }}
+  otherStyle={{
+    headStyle: { height: 50 },
+    headTextStyle: { width: 200 },
+    bodyStyle: { height: 500 },
+    bodyRowStyle: { height: 50 },
+    bodyTextStyle: { color: '#333' }
+  }}
+  horizontal />
+  ```
+  属性：
+  * head(Array)：表头信息,其中flex和width为可选参数，默认值flex=1, width=100；当horizontal = false时,flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
+  * data（Array）：数据，注意数据字段名称与表头id一一对应；  
+  * style（obj）：表格样式；  
+  * otherStyle（obj）：表内其他部分样式，分别对应headStyle：表头，headTextStyle：表头文字，表格内容：bodyStyle，表格行：bodyRowStyle，表格文字：bodyTextStyle；  
+  * horizontal（bool）：标识是否可横向滑动，即表头过长时，显示横向滚动条。  
+  
   
