@@ -15,32 +15,39 @@ export default class Table extends Component {
         super(props);
         this.state = {
             oldHead: [],
-            HeighrArr: []
+            HeightArr: [],
+            bodyHeight: HEIGHT
         }
         this.rowRefArr = [];
     }
 
+    changeBodyLayout = (event) => {
+        this.setState({
+            bodyHeight: event.nativeEvent.layout.height
+        });
+    }
+
     changeViewLayout = (event, index, head) => {
-        const { oldHead, HeighrArr } = this.state;
+        const { oldHead, HeightArr } = this.state;
         if (oldHead !== head) { // 不同table，初始化
             this.setState({
                 oldHead: head,
-                HeighrArr: []
+                HeightArr: []
             });
         }
 
         const _height = event.nativeEvent.layout.height,
-            oldHeight = HeighrArr[index];
+            oldHeight = HeightArr[index];
 
         if (oldHeight) {
-            HeighrArr[index] = _height > oldHeight ? _height : oldHeight;
+            HeightArr[index] = _height > oldHeight ? _height : oldHeight;
         } else {
-            HeighrArr[index] = _height;
+            HeightArr[index] = _height;
         }
 
         this.rowRefArr[index].setNativeProps({
             style: {
-                height: HeighrArr[index],
+                height: HeightArr[index],
             }
         });
     }
@@ -79,12 +86,12 @@ export default class Table extends Component {
                 </View>
                 <View style={{
                     ...styles.body,
-                    height: data.length * HEIGHT,
+                    height: this.state.bodyHeight,
                     ...bodyStyle
                 }}>
                     <ScrollView>
                         {data.length > 0
-                            ? <View>
+                            ? <View onLayout={this.changeBodyLayout}>
                                 {data.map((row, index) => {
                                     return React.createElement(View,
                                         {

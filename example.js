@@ -3,12 +3,16 @@ import { StyleSheet, Text, View } from 'react-native';
 import {
     RadioGroup,
     Button,
-    Table
+    Table,
+    Radio
 } from "./src/index";
 
 export default class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            checked: false
+        }
     }
 
     render() {
@@ -16,11 +20,20 @@ export default class App extends Component {
             <View style={styles.container}>
                 <Text>RadioGroup：</Text>
                 <RadioGroup
-                    defaultChecked="1"
-                    onChange={(checked) => { alert(checked) }}
+                    onChange={(id) => { }}
                     option={[
                         [
-                            { id: '1', label: '不处理' },
+                            {
+                                id: '1',
+                                label: '不处理',
+                                style: {
+                                    height: 70,
+                                    lineHeight: 70,
+                                    fontSize: 20,
+                                    color: '#333'
+                                },
+                                radioColor: "blue"
+                            },
                             { id: '2', label: '继续观察' },
                         ], [
                             { id: '3', label: '已处理' },
@@ -29,7 +42,7 @@ export default class App extends Component {
                     ]}
                     style={{
                         padding: 20,
-                        width: 200,
+                        width: 300,
                         height: 100,
                     }} />
                 <Text>Button：</Text>
@@ -38,6 +51,21 @@ export default class App extends Component {
                     onPress={() => { }}
                     style={{ width: 100, margin: 10 }}
                     textStyle={{ color: "#333" }} />
+                <Text>Radio：</Text>
+                <Radio
+                    defaultChecked={false}
+                    id='radio'
+                    onChange={(checked) => {
+                        // alert(checked)
+                    }}
+                    label="单选按钮"
+                    style={{
+                        height: 70,
+                        lineHeight: 70,
+                        fontSize: 20,
+                        color: '#333'
+                    }}
+                    radioColor="blue" />
                 <Text>Table：</Text>
                 <Table
                     head={[
@@ -46,7 +74,7 @@ export default class App extends Component {
                         { id: 'js', name: '计数', flex: 1 },
                     ]}
                     data={[
-                        { hldj: 1, cwhz: 2, js: 3 },
+                        { hldj: 1, cwhz: '啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈', js: 3 },
                         { hldj: 1, cwhz: 2, js: 3 },
                         { hldj: 1, cwhz: 2, js: 3 },
                     ]}
@@ -54,10 +82,11 @@ export default class App extends Component {
                     otherStyle={{
                         headStyle: { height: 50 },
                         headTextStyle: { width: 200 },
-                        bodyStyle: { height: 500 },
+                        bodyStyle: { backgroundColor: '#ddd' },
                         bodyRowStyle: { height: 50 },
                         bodyTextStyle: { color: '#333' }
-                    }} />
+                    }}
+                    horizontal />
             </View>
         );
     }

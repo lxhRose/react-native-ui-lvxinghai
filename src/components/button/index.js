@@ -59,8 +59,8 @@ const styles = StyleSheet.create({
 });
 
 Button.propTypes = {
-    onPress: PropTypes.func,
     text: PropTypes.string.isRequired,
+    onPress: PropTypes.func,
     style: PropTypes.object,
     textStyle: PropTypes.object,
     disabled: PropTypes.bool,

@@ -10,7 +10,7 @@ export default class RadioGroup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: this.props.defaultChecked ? this.props.defaultChecked : ''
+            checked: ''
         }
     }
 
@@ -31,7 +31,7 @@ export default class RadioGroup extends Component {
             checked
         } = this.state;
 
-        const { option } = this.props;
+        const { option, defaultChecked } = this.props;
 
         return React.createElement(View,
             {
@@ -54,9 +54,12 @@ export default class RadioGroup extends Component {
                                         },
                                         <Radio
                                             id={child.id}
-                                            checked={checked.toString() === child.id.toString()}
-                                            onChange={this.onChange}
-                                            label={child.label} />
+                                            defaultChecked={defaultChecked === child.id.toString()}
+                                            onChange={() => this.onChange(child.id)}
+                                            label={child.label}
+                                            groupCheckedId={checked}
+                                            style={child.style}
+                                            radioColor={child.radioColor} />
                                     );
                                 })}
                             </>
@@ -69,9 +72,11 @@ export default class RadioGroup extends Component {
                             },
                             <Radio
                                 id={item.id}
-                                checked={checked.toString() === item.id.toString()}
-                                onChange={this.onChange}
-                                label={item.label} />
+                                defaultChecked={defaultChecked === item.id.toString()}
+                                onChange={() => this.onChange(item.id)}
+                                label={item.label}
+                                style={item.style}
+                                radioColor={item.radioColor} />
                         );
                     }
                 })}
@@ -82,8 +87,8 @@ export default class RadioGroup extends Component {
 
 const styles = StyleSheet.create({
     RadioGroup: {
-        width: 200,
-        height: 100,
+        width: 100,
+        height: 50,
     },
     Row: {
         flex: 1,
@@ -93,8 +98,8 @@ const styles = StyleSheet.create({
 });
 
 RadioGroup.propTypes = {
-    onChange: PropTypes.func,
     option: PropTypes.array.isRequired,
+    onChange: PropTypes.func,
     defaultChecked: PropTypes.string,
     style: PropTypes.object,
 };
