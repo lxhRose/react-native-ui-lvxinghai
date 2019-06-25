@@ -83,9 +83,9 @@ Button
 Table
 ---
 default  
-![Table-img]()
-horizontal  
-![Table-horizontal-img]()
+![Table-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Table.png)  
+horizontal    
+![Table-horizontal-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Table-horizontal.png)  
 ```js
 <Table
   head={[
