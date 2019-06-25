@@ -10,6 +10,34 @@ npm i react-native-ui-lvxinghai
   
 使用：  
 ---
+Radio
+---
+![Radio-img]()  
+```js
+<Radio
+  defaultChecked={false}
+  id='radio'
+  onChange={(checked) => {
+    // alert(checked)
+  }}
+  label="单选按钮"
+  style={{
+    height: 70,
+    lineHeight: 70,
+    fontSize: 20,
+    color: '#333'
+  }}
+  radioColor="blue" />
+```
+属性：  
+* id: PropTypes.string.isRequired，必选。单选按钮的唯一标识。
+* label: PropTypes.string，可选。单选按钮的文字描述。
+* defaultChecked: PropTypes.bool，可选。默认选中否？
+* onChange: PropTypes.func，可选。点击的回调函数，返回当前选中情况。
+* style: PropTypes.object，可选。单选按钮以及label的样式设置，可以设置字体大小行高颜色等。
+* radioColor: PropTypes.string，可选。单独设置Radio（label除外）的颜色。
+* groupCheckedId: PropTypes.string，可选。提供给RadioGroup使用，指定当前选中的单选按钮id，该单选按钮以外的组成员选中状态置为false。
+
 RadioGroup  
 ---
 ![RadioGroup-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/RadioGroup.png)  
@@ -18,10 +46,21 @@ RadioGroup
 import {RadioGroup} from "react-native-ui-lvxinghai";   
 <RadioGroup
   defaultChecked="1"
-  onChange={(checked) => { alert(checked) }}
+  onChange={(id) => { alert(id) }}
   option={[
     [
-      { id: '1', label: '不处理', flex: 1 },
+      {  
+        id: '1',
+        label: '不处理',
+        style: {
+          height: 70,
+          lineHeight: 70,
+          fontSize: 20,
+          color: '#333'
+        },
+        radioColor: "blue"
+        flex: 1 
+      },
       { id: '2', label: '继续观察', flex: 1 },
     ], [
       { id: '3', label: '已处理', flex: 1 },
@@ -36,7 +75,7 @@ import {RadioGroup} from "react-native-ui-lvxinghai";
 ```
    
 属性：  
-* option（Array）：必选。配置，具体如下：  
+* option（Array）：必选。配置，可通过option子对象中的style属性和radioColor属性设置Radio的样式，具体如下：  
 * defaultChecked（string）：可选。默认选中项的id;  
 * onChange（function）：可选。发生改变时的回调函数，返回值是选中的Radio id值；   
 * style（object）：可选。样式属性，暂时只支持设置包裹层样式；  
