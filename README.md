@@ -21,11 +21,11 @@ import {RadioGroup} from "react-native-ui-lvxinghai";
   onChange={(checked) => { alert(checked) }}
   option={[
     [
-      { id: '1', label: '不处理' },
-      { id: '2', label: '继续观察' },
+      { id: '1', label: '不处理', flex: 1 },
+      { id: '2', label: '继续观察', flex: 1 },
     ], [
-      { id: '3', label: '已处理' },
-      { id: '4', label: '慢性变化无需处理' },
+      { id: '3', label: '已处理', flex: 1 },
+      { id: '4', label: '慢性变化无需处理', flex: 1 },
     ]
   ]}
   style={{
@@ -38,28 +38,28 @@ import {RadioGroup} from "react-native-ui-lvxinghai";
 属性：  
 * defaultChecked（string）：默认选中项的id;  
 * onChange（function）：发生改变时的回调函数，返回值是选中的Radio id值；   
-* option（Array）：配置，具体如下： 
 * style（object）：样式属性，暂时只支持设置包裹层样式；  
+* option（Array）：配置，具体如下： 
     
 如果要分组横向排列就使用   
 ```js
 option=[  
   [  
-    { id: '1', label: '不处理' },
-    { id: '2', label: '继续观察' },  
+    { id: '1', label: '不处理', flex: 1 },
+    { id: '2', label: '继续观察', flex: 1 },  
   ], [  
-    { id: '3', label: '已处理' },
-    { id: '4', label: '慢性变化无需处理' },  
+    { id: '3', label: '已处理', flex: 1 },
+    { id: '4', label: '慢性变化无需处理', flex: 1 },  
   ]    
 ]  
 ```  
 如果直接竖直排列，  
 ```js
 option = [  
-    { id: '1', label: '不处理' },
-    { id: '2', label: '继续观察' },
-    { id: '3', label: '已处理' },
-    { id: '4', label: '慢性变化无需处理' },  
+    { id: '1', label: '不处理', flex: 1 },
+    { id: '2', label: '继续观察', flex: 1 },
+    { id: '3', label: '已处理', flex: 1 },
+    { id: '4', label: '慢性变化无需处理', flex: 1 },  
 ]  
 ```  
 支持设置Radio的flex。  
