@@ -36,10 +36,10 @@ import {RadioGroup} from "react-native-ui-lvxinghai";
 ```
    
 属性：  
-* defaultChecked（string）：默认选中项的id;  
-* onChange（function）：发生改变时的回调函数，返回值是选中的Radio id值；   
-* style（object）：样式属性，暂时只支持设置包裹层样式；  
-* option（Array）：配置，具体如下： 
+* defaultChecked（string）：可选。默认选中项的id;  
+* onChange（function）：可选。发生改变时的回调函数，返回值是选中的Radio id值；   
+* style（object）：可选。样式属性，暂时只支持设置包裹层样式；  
+* option（Array）：必选。配置，具体如下： 
     
 如果要分组横向排列就使用   
 ```js
@@ -75,10 +75,10 @@ Button
   textStyle={{ color: "#333" }} />
 ```
 属性：  
-* text（string）：按钮名称；  
-* onPress（function）：点击按钮触发的事件；  
-* style（obj）：按钮样式；  
-* textStyle（obj）：按钮文字样式。  
+* text（string）：必选。按钮名称；  
+* onPress（function）：可选。点击按钮触发的事件；  
+* style（obj）：可选。按钮样式；  
+* textStyle（obj）：可选。按钮文字样式。  
   
 Table
 ---
@@ -109,10 +109,10 @@ horizontal
   horizontal />
   ```
   属性：
-  * head(Array)：表头信息，其中flex和width为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
-  * data（Array）：数据，注意数据字段名称与表头id一一对应；  
-  * style（obj）：表格样式；  
-  * otherStyle（obj）：表内其他部分样式，分别对应headStyle：表头，headTextStyle：表头文字，表格内容：bodyStyle，表格行：bodyRowStyle，表格文字：bodyTextStyle；  
-  * horizontal（bool）：标识是否可横向滑动，即表头过长时，显示横向滚动条。  
+  * head(Array)：必选。表头信息，其中flex和width为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
+  * data（Array）：必选。数据，注意数据字段名称与表头id一一对应；  
+  * style（obj）：可选。表格样式；  
+  * otherStyle（obj）：可选。表内其他部分样式，分别对应headStyle：表头，headTextStyle：表头文字，表格内容：bodyStyle，表格行：bodyRowStyle，表格文字：bodyTextStyle；  
+  * horizontal（bool）：可选。标识是否可横向滑动，即表头过长时，显示横向滚动条。  
   
   
