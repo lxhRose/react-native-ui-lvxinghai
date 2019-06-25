@@ -13,7 +13,8 @@ npm i react-native-ui-lvxinghai
 一：RadioGroup组件：  
 ---
 ![RadioGroup](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/RadioGroup.png)  
-import {RadioGroup} from "react-native-ui-lvxinghai";  
+
+import {<font color=#0099ff>RadioGroup</font>} from "react-native-ui-lvxinghai";  
 <RadioGroup  
 defaultChecked="bcl"  
 onChange={this.onChange}  
