@@ -14,6 +14,7 @@ Radio
 ---
 ![Radio-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Radio.png)  
 ```js
+import { Radio } from "react-native-ui-lvxinghai"; 
 <Radio
   defaultChecked={false}
   id='radio'
@@ -43,7 +44,7 @@ RadioGroup
 ![RadioGroup-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/RadioGroup.png)  
 
 ```js
-import {RadioGroup} from "react-native-ui-lvxinghai";   
+import { RadioGroup } from "react-native-ui-lvxinghai";   
 <RadioGroup
   defaultChecked="1"
   onChange={(id) => { alert(id) }}
@@ -107,6 +108,7 @@ Button
 ---
 ![RadioGroup-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Button.png)  
 ```js
+import { Button } from "react-native-ui-lvxinghai";
 <Button
   text="确认"
   onPress={() => { }}
@@ -126,6 +128,7 @@ default
 horizontal    
 ![Table-horizontal-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Table-horizontal.png)  
 ```js
+import { Table } from "react-native-ui-lvxinghai";
 <Table
   head={[
     { id: 'hldj', name: '护理等级', flex: 1, width: 300 },
