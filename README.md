@@ -6,7 +6,7 @@ react-native-ui-lvxinghai
   
 安装：  
 ---
-npm i react-native-ui-lvxinghai    
+    npm i react-native-ui-lvxinghai    
   
 使用：  
 ---
