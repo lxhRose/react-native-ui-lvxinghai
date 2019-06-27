@@ -168,7 +168,7 @@ import { BaseModal } from "react-native-ui-lvxinghai";
   closeModal={() => this.setState({ visible: false })} />
 ```
 * visible: PropTypes.bool,可选。控制模态框的显示隐藏；  
-* closeModal: PropTypes.func,可选。关闭模态框的函数；  
+* closeModal: PropTypes.func,可选。关闭模态框的函数，点击右上角的关闭按钮时触发；  
 * hideCloseBtn: PropTypes.bool,可选。隐藏自带的关闭按钮；  
 * children: PropTypes.any,可选。子元素，即要在模态框中显示的内容，例如  
 ```js
