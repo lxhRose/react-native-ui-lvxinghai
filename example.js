@@ -84,10 +84,10 @@ export default class App extends Component {
                     style={{ width: 800, height: 550 }}
                     headStyle={{ height: 50 }}
                     headTextStyle={{ width: 200 }}
-                    bodyStyle={{ backgroundColor: '#ddd' }}
+                    bodyStyle={{ backgroundColor: '#fff' }}
                     bodyRowStyle={{ height: 50 }}
                     bodyTextStyle={{ color: '#333' }}
-                    evenRowColor="green"
+                    evenRowColor="#4ACA6D"
                     horizontal />
                 <BaseModal
                     visible={this.state.visible}
