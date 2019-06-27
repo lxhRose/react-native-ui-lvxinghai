@@ -141,20 +141,22 @@ import { Table } from "react-native-ui-lvxinghai";
     { hldj: 1, cwhz: 2, js: 3 },
   ]}
   style={{ width: 800, height: 550 }}
-  otherStyle={{
-    headStyle: { height: 50 },
-    headTextStyle: { width: 200 },
-    bodyStyle: { height: 500 },
-    bodyRowStyle: { height: 50 },
-    bodyTextStyle: { color: '#333' }
-  }}
+  headStyle={{ height: 50 }}
+  headTextStyle={{ width: 200 }}
+  bodyStyle={{ backgroundColor: '#ddd' }}
+  bodyRowStyle={{ height: 50 }}
+  bodyTextStyle={{ color: '#333' }}
   horizontal />
   ```
   属性：
   * head(Array)：必选。表头信息，其中flex和width为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
   * data（Array）：必选。数据，注意数据字段名称与表头id一一对应；  
   * style（obj）：可选。表格样式；  
-  * otherStyle（obj）：可选。表内其他部分样式，分别对应headStyle：表头，headTextStyle：表头文字，表格内容：bodyStyle，表格行：bodyRowStyle，表格文字：bodyTextStyle；如果想设置表格的body部分内容超出沿Y轴滚动，只需要给bodyStyle一个height值。    
+  * headStyle（obj）：可选。设置表头样式。  
+  * headTextStyle（obj）：可选。设置表头单元格文字样式。  
+  * bodyStyle（obj）：可选。设置表格内容样式，如果想设置表格的body部分内容超出沿Y轴滚动，只需要给bodyStyle一个height值。  
+  * bodyRowStyle（obj）：可选。设置表格行样式。  
+  * bodyTextStyle（obj）：可选。设置表格单元格文字样式。  
   * horizontal（bool）：可选。标识是否可横向滑动，即表头过长时，显示横向滚动条。  
   
 BaseModal（基础模态框）  
