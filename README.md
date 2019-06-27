@@ -133,7 +133,7 @@ import { Table } from "react-native-ui-lvxinghai";
   head={[
     { id: 'hldj', name: '护理等级', flex: 1, width: 300 },
     { id: 'cwhz', name: '床位患者', flex: 5, width: 300 },
-    { id: 'js', name: '计数', flex: 1 },
+    { id: 'js', name: '计数', flex: 1, render: (data) => <Text>this is a element:{data}</Text> },
   ]}
   data={[
     { hldj: 1, cwhz: 2, js: 3 },
@@ -146,10 +146,13 @@ import { Table } from "react-native-ui-lvxinghai";
   bodyStyle={{ backgroundColor: '#ddd' }}
   bodyRowStyle={{ height: 50 }}
   bodyTextStyle={{ color: '#333' }}
+  evenRowColor="green"
   horizontal />
   ```
   props：
-  * head(Array)：必选。表头信息，其中flex和width为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
+  * head(Array)：必选。表头信息；  
+  其中flex和width为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
+  其中render(data)可以用元素替换表中的内容，data为本身id对应的值。
   * data（Array）：必选。数据，注意数据字段名称与表头id一一对应；  
   * style（obj）：可选。表格样式；  
   * headStyle（obj）：可选。设置表头样式。  
@@ -158,6 +161,7 @@ import { Table } from "react-native-ui-lvxinghai";
   * bodyRowStyle（obj）：可选。设置表格行样式。  
   * bodyTextStyle（obj）：可选。设置表格单元格文字样式。  
   * horizontal（bool）：可选。标识是否可横向滑动，即表头过长时，显示横向滚动条。  
+  * evenRowColor（string）：可选。设置表格内容偶数行的颜色，传值类型为为颜色字符串，如："#fff"、"red"。
   
 BaseModal（基础模态框）  
 ---  
