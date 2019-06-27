@@ -30,7 +30,7 @@ import { Radio } from "react-native-ui-lvxinghai";
   }}
   radioColor="blue" />
 ```
-属性：  
+props：  
 * id: PropTypes.string.isRequired，必选。单选按钮的唯一标识。
 * label: PropTypes.string，可选。单选按钮的文字描述。
 * defaultChecked: PropTypes.bool，可选。默认选中否？
@@ -75,7 +75,7 @@ import { RadioGroup } from "react-native-ui-lvxinghai";
   }} />  
 ```
    
-属性：  
+props：  
 * option（Array）：必选。配置，可通过option子对象中的style属性和radioColor属性设置Radio的样式，具体如下：  
 * defaultChecked（string）：可选。默认选中项的id;  
 * onChange（function）：可选。发生改变时的回调函数，返回值是选中的Radio id值；   
@@ -115,7 +115,7 @@ import { Button } from "react-native-ui-lvxinghai";
   style={{ width: 100, margin: 10 }}
   textStyle={{ color: "#333" }} />
 ```
-属性：  
+props：  
 * text（string）：必选。按钮名称；  
 * onPress（function）：可选。点击按钮触发的事件；  
 * style（obj）：可选。按钮样式；  
@@ -148,7 +148,7 @@ import { Table } from "react-native-ui-lvxinghai";
   bodyTextStyle={{ color: '#333' }}
   horizontal />
   ```
-  属性：
+  props：
   * head(Array)：必选。表头信息，其中flex和width为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
   * data（Array）：必选。数据，注意数据字段名称与表头id一一对应；  
   * style（obj）：可选。表格样式；  
@@ -167,6 +167,7 @@ import { BaseModal } from "react-native-ui-lvxinghai";
   visible={this.state.visible}
   closeModal={() => this.setState({ visible: false })} />
 ```
+props：  
 * visible: PropTypes.bool,可选。控制模态框的显示隐藏；  
 * closeModal: PropTypes.func,可选。关闭模态框的函数，点击右上角的关闭按钮时触发；  
 * hideCloseBtn: PropTypes.bool,可选。隐藏自带的关闭按钮；  
