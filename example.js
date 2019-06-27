@@ -4,14 +4,17 @@ import {
     RadioGroup,
     Button,
     Table,
-    Radio
+    Radio,
+    BaseModal
 } from "./src/index";
+import adap from "./src/utils/adaptation";
 
 export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: false
+            checked: false,
+            visible: false
         }
     }
 
@@ -49,8 +52,8 @@ export default class App extends Component {
                 <Button
                     text="确认"
                     onPress={() => { }}
-                    style={{ width: 100, margin: 10 }}
-                    textStyle={{ color: "#333" }} />
+                    style={styles.btnStyle}
+                    textStyle={styles.btnTextStyle} />
                 <Text>Radio：</Text>
                 <Radio
                     defaultChecked={false}
@@ -74,19 +77,20 @@ export default class App extends Component {
                         { id: 'js', name: '计数', flex: 1 },
                     ]}
                     data={[
-                        { hldj: 1, cwhz: '啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈啊哈哈哈哈', js: 3 },
+                        { hldj: 1, cwhz: 2, js: 3 },
                         { hldj: 1, cwhz: 2, js: 3 },
                         { hldj: 1, cwhz: 2, js: 3 },
                     ]}
                     style={{ width: 800, height: 550 }}
-                    otherStyle={{
-                        headStyle: { height: 50 },
-                        headTextStyle: { width: 200 },
-                        bodyStyle: { backgroundColor: '#ddd' },
-                        bodyRowStyle: { height: 50 },
-                        bodyTextStyle: { color: '#333' }
-                    }}
+                    headStyle={{ height: 50 }}
+                    headTextStyle={{ width: 200 }}
+                    bodyStyle={{ backgroundColor: '#ddd' }}
+                    bodyRowStyle={{ height: 50 }}
+                    bodyTextStyle={{ color: '#333' }}
                     horizontal />
+                <BaseModal
+                    visible={this.state.visible}
+                    closeModal={() => this.setState({ visible: false })} />
             </View>
         );
     }
@@ -97,4 +101,14 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 10,
     },
+    btnStyle: {
+        borderRadius: 0,
+        width: "100%",
+        height: adap.h(160),
+        backgroundColor: "#3B7CFF"
+    },
+    btnTextStyle: {
+        fontSize: adap.font(50),
+        color: "#fff"
+    }
 });

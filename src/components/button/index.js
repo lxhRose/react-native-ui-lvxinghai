@@ -9,16 +9,30 @@ import PropTypes from 'prop-types';
 export default class Button extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            lineHeight: 0
+        }
+    }
+
+    changeViewLayout = (event) => {
+        this.setState({
+            lineHeight: event.nativeEvent.layout.height - 10
+        });
     }
 
     render() {
         const btnStyle = { ...styles.button, ...this.props.style };
-        const textStyle = { ...styles.text, ...this.props.textStyle };
+        const textStyle = {
+            ...styles.text,
+            lineHeight: this.state.lineHeight,
+            ...this.props.textStyle,
+        };
 
         return React.createElement(TouchableOpacity,
             {
                 onPress: this.props.onPress,
                 disabled: this.props.disabled,
+                onLayout: this.changeViewLayout,
                 style: this.props.disabled
                     ? { ...btnStyle, ...styles.disabledStyle }
                     : btnStyle

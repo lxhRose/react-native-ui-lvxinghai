@@ -76,7 +76,7 @@ export default class Table extends Component {
                                         ...styles.headItem,
                                         ...headTextStyle,
                                         flex: item.flex || 1,
-                                        width: item.width || headTextStyle.width || 100
+                                        width: item.width || (headTextStyle && headTextStyle.width) || 100
                                     }
                                 },
                                 item.name
@@ -109,7 +109,7 @@ export default class Table extends Component {
                                                             ...styles.rowItem,
                                                             ...bodyTextStyle,
                                                             flex: headItem.flex || 1,
-                                                            width: headItem.width || headTextStyle.width || 100
+                                                            width: headItem.width || (headTextStyle && headTextStyle.width) || 100
                                                         },
                                                         onLayout: (e) => this.changeViewLayout(e, index, head)
                                                     },
@@ -135,9 +135,21 @@ export default class Table extends Component {
             head,
             data,
             style,
-            otherStyle,
             horizontal,
+            headStyle,
+            headTextStyle,
+            bodyStyle,
+            bodyRowStyle,
+            bodyTextStyle
         } = this.props;
+
+        const otherStyle = {
+            headStyle,
+            headTextStyle,
+            bodyStyle,
+            bodyRowStyle,
+            bodyTextStyle
+        }
 
         return React.createElement(View,
             {
@@ -197,16 +209,10 @@ Table.propTypes = {
     data: PropTypes.array.isRequired,
     horizontal: PropTypes.bool,
     style: PropTypes.object,
-    otherStyle: PropTypes.objectOf(PropTypes.object),
+    headStyle: PropTypes.object,
+    headTextStyle: PropTypes.object,
+    bodyStyle: PropTypes.object,
+    bodyRowStyle: PropTypes.object,
+    bodyTextStyle: PropTypes.object
 };
 
-// 指定 props 的默认值：
-Table.defaultProps = {
-    otherStyle: {
-        headStyle: {},
-        headTextStyle: {},
-        bodyStyle: {},
-        bodyRowStyle: {},
-        bodyTextStyle: {}
-    }
-};
