@@ -159,6 +159,12 @@ import { Table } from "react-native-ui-lvxinghai";
   
 BaseModal（基础模态框）  
 ---  
+```js
+import { BaseModal } from "react-native-ui-lvxinghai";
+<BaseModal
+  visible={this.state.visible}
+  closeModal={() => this.setState({ visible: false })} />
+```
 * visible: PropTypes.bool,可选。控制模态框的显示隐藏；  
 * closeModal: PropTypes.func,可选。关闭模态框的函数；  
 * hideCloseBtn: PropTypes.bool,可选。隐藏自带的关闭按钮；  
