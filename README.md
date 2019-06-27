@@ -122,10 +122,7 @@ props：
 * textStyle（obj）：可选。按钮文字样式。  
   
 Table（表格）  
----
-default  
-![Table-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Table.png)  
-horizontal    
+---      
 ![Table-horizontal-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Table-horizontal.png)  
 ```js
 import { Table } from "react-native-ui-lvxinghai";
@@ -143,10 +140,10 @@ import { Table } from "react-native-ui-lvxinghai";
   style={{ width: 800, height: 550 }}
   headStyle={{ height: 50 }}
   headTextStyle={{ width: 200 }}
-  bodyStyle={{ backgroundColor: '#ddd' }}
+  bodyStyle={{ backgroundColor: '#fff' }}
   bodyRowStyle={{ height: 50 }}
   bodyTextStyle={{ color: '#333' }}
-  evenRowColor="green"
+  evenRowColor="#4ACA6D"
   horizontal />
   ```
   props：
