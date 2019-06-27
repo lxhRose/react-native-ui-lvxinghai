@@ -58,7 +58,8 @@ export default class Table extends Component {
             headTextStyle,
             bodyStyle,
             bodyRowStyle,
-            bodyTextStyle
+            bodyTextStyle,
+            evenRowColor
         } = otherStyle;
         return React.createElement(View,
             {
@@ -95,7 +96,11 @@ export default class Table extends Component {
                                 {data.map((row, index) => {
                                     return React.createElement(View,
                                         {
-                                            style: { ...styles.Row, ...bodyRowStyle },
+                                            style: {
+                                                ...styles.Row,
+                                                ...bodyRowStyle,
+                                                backgroundColor: index % 2 === 0 ? "" : evenRowColor
+                                            },
                                             ref: rowRef => { this.rowRefArr[index] = rowRef },
                                             key: index
                                         },
@@ -113,7 +118,9 @@ export default class Table extends Component {
                                                         },
                                                         onLayout: (e) => this.changeViewLayout(e, index, head)
                                                     },
-                                                    row[headItem.id]
+                                                    headItem.render
+                                                        ? headItem.render(row[headItem.id])
+                                                        : row[headItem.id]
                                                 )
                                             })}
                                         </View>
@@ -140,7 +147,8 @@ export default class Table extends Component {
             headTextStyle,
             bodyStyle,
             bodyRowStyle,
-            bodyTextStyle
+            bodyTextStyle,
+            evenRowColor
         } = this.props;
 
         const otherStyle = {
@@ -148,7 +156,8 @@ export default class Table extends Component {
             headTextStyle,
             bodyStyle,
             bodyRowStyle,
-            bodyTextStyle
+            bodyTextStyle,
+            evenRowColor
         }
 
         return React.createElement(View,
@@ -213,6 +222,7 @@ Table.propTypes = {
     headTextStyle: PropTypes.object,
     bodyStyle: PropTypes.object,
     bodyRowStyle: PropTypes.object,
-    bodyTextStyle: PropTypes.object
+    bodyTextStyle: PropTypes.object,
+    evenRowColor: PropTypes.string,
 };
 

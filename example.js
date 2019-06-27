@@ -74,7 +74,7 @@ export default class App extends Component {
                     head={[
                         { id: 'hldj', name: '护理等级', flex: 1, width: 300 },
                         { id: 'cwhz', name: '床位患者', flex: 5, width: 300 },
-                        { id: 'js', name: '计数', flex: 1 },
+                        { id: 'js', name: '计数', flex: 1, render: (data) => <Text>this is a element:{data}</Text> },
                     ]}
                     data={[
                         { hldj: 1, cwhz: 2, js: 3 },
@@ -87,6 +87,7 @@ export default class App extends Component {
                     bodyStyle={{ backgroundColor: '#ddd' }}
                     bodyRowStyle={{ height: 50 }}
                     bodyTextStyle={{ color: '#333' }}
+                    evenRowColor="green"
                     horizontal />
                 <BaseModal
                     visible={this.state.visible}
