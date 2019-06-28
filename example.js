@@ -74,7 +74,7 @@ export default class App extends Component {
                     head={[
                         { id: 'hldj', name: '护理等级', flex: 1, width: 300 },
                         { id: 'cwhz', name: '床位患者', flex: 5, width: 300 },
-                        { id: 'js', name: '计数', flex: 1, render: (data) => <Text>this is a element:{data}</Text> },
+                        { id: 'js', name: '计数', flex: 1, render: (data) => <View><Text>This is a element:{data.js}</Text></View> },
                     ]}
                     data={[
                         { hldj: 1, cwhz: 2, js: 3 },

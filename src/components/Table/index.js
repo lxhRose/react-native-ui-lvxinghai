@@ -106,21 +106,26 @@ export default class Table extends Component {
                                         },
                                         <View style={styles.wrap}>
                                             {head.map((headItem) => {
-                                                return React.createElement(Text,
+                                                return React.createElement(View,
                                                     {
                                                         key: headItem.id,
                                                         style: {
-                                                            ...styles.Item,
-                                                            ...styles.rowItem,
-                                                            ...bodyTextStyle,
+                                                            width: headItem.width || (headTextStyle && headTextStyle.width) || 100,
                                                             flex: headItem.flex || 1,
-                                                            width: headItem.width || (headTextStyle && headTextStyle.width) || 100
-                                                        },
-                                                        onLayout: (e) => this.changeViewLayout(e, index, head)
+                                                        }
                                                     },
                                                     headItem.render
-                                                        ? headItem.render(row[headItem.id])
-                                                        : row[headItem.id]
+                                                        ? headItem.render(row)
+                                                        : <Text
+                                                            style={{
+                                                                ...styles.Item,
+                                                                ...styles.rowItem,
+                                                                ...bodyTextStyle,
+                                                            }}
+                                                            onLayout={(e) => this.changeViewLayout(e, index, head)}
+                                                        >
+                                                            {row[headItem.id]}
+                                                        </Text>
                                                 )
                                             })}
                                         </View>
@@ -179,11 +184,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#3B7CFF',
     },
     Item: {
-        flex: 1,
         padding: adap.h(42),
         width: 100,
         fontSize: adap.font(41),
-        lineHeight: adap.h(57),
+        lineHeight: adap.h(57)
     },
     headItem: {
         color: '#fff',

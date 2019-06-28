@@ -30,7 +30,7 @@ import { Radio } from "react-native-ui-lvxinghai";
   }}
   radioColor="blue" />
 ```
-属性：  
+props：  
 * id: PropTypes.string.isRequired，必选。单选按钮的唯一标识。
 * label: PropTypes.string，可选。单选按钮的文字描述。
 * defaultChecked: PropTypes.bool，可选。默认选中否？
@@ -75,7 +75,7 @@ import { RadioGroup } from "react-native-ui-lvxinghai";
   }} />  
 ```
    
-属性：  
+props：  
 * option（Array）：必选。配置，可通过option子对象中的style属性和radioColor属性设置Radio的样式，具体如下：  
 * defaultChecked（string）：可选。默认选中项的id;  
 * onChange（function）：可选。发生改变时的回调函数，返回值是选中的Radio id值；   
@@ -115,17 +115,14 @@ import { Button } from "react-native-ui-lvxinghai";
   style={{ width: 100, margin: 10 }}
   textStyle={{ color: "#333" }} />
 ```
-属性：  
+props：  
 * text（string）：必选。按钮名称；  
 * onPress（function）：可选。点击按钮触发的事件；  
 * style（obj）：可选。按钮样式；  
 * textStyle（obj）：可选。按钮文字样式。  
   
 Table（表格）  
----
-default  
-![Table-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Table.png)  
-horizontal    
+---      
 ![Table-horizontal-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Table-horizontal.png)  
 ```js
 import { Table } from "react-native-ui-lvxinghai";
@@ -133,7 +130,7 @@ import { Table } from "react-native-ui-lvxinghai";
   head={[
     { id: 'hldj', name: '护理等级', flex: 1, width: 300 },
     { id: 'cwhz', name: '床位患者', flex: 5, width: 300 },
-    { id: 'js', name: '计数', flex: 1 },
+    { id: 'js', name: '计数', flex: 1, render: (data) => <Text>This is a element:{data.js}</Text> },
   ]}
   data={[
     { hldj: 1, cwhz: 2, js: 3 },
@@ -143,13 +140,16 @@ import { Table } from "react-native-ui-lvxinghai";
   style={{ width: 800, height: 550 }}
   headStyle={{ height: 50 }}
   headTextStyle={{ width: 200 }}
-  bodyStyle={{ backgroundColor: '#ddd' }}
+  bodyStyle={{ backgroundColor: '#fff' }}
   bodyRowStyle={{ height: 50 }}
   bodyTextStyle={{ color: '#333' }}
+  evenRowColor="#4ACA6D"
   horizontal />
   ```
-  属性：
-  * head(Array)：必选。表头信息，其中flex和width为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
+  props：
+  * head(Array)：必选。表头信息；  
+  其中flex和width为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
+  其中render(data)可以用元素替换表中的内容，data为一整行值的对象。注意：如果是字符串或者数字，请务必使用Text标签包裹起来，使用bodyTextStyle设置的样式对该元素无效，需要单独设置。
   * data（Array）：必选。数据，注意数据字段名称与表头id一一对应；  
   * style（obj）：可选。表格样式；  
   * headStyle（obj）：可选。设置表头样式。  
@@ -158,6 +158,7 @@ import { Table } from "react-native-ui-lvxinghai";
   * bodyRowStyle（obj）：可选。设置表格行样式。  
   * bodyTextStyle（obj）：可选。设置表格单元格文字样式。  
   * horizontal（bool）：可选。标识是否可横向滑动，即表头过长时，显示横向滚动条。  
+  * evenRowColor（string）：可选。设置表格内容偶数行的颜色，传值类型为为颜色字符串，如："#fff"、"red"。
   
 BaseModal（基础模态框）  
 ---  
@@ -167,8 +168,9 @@ import { BaseModal } from "react-native-ui-lvxinghai";
   visible={this.state.visible}
   closeModal={() => this.setState({ visible: false })} />
 ```
+props：  
 * visible: PropTypes.bool,可选。控制模态框的显示隐藏；  
-* closeModal: PropTypes.func,可选。关闭模态框的函数；  
+* closeModal: PropTypes.func,可选。关闭模态框的函数，点击右上角的关闭按钮时触发；  
 * hideCloseBtn: PropTypes.bool,可选。隐藏自带的关闭按钮；  
 * children: PropTypes.any,可选。子元素，即要在模态框中显示的内容，例如  
 ```js
