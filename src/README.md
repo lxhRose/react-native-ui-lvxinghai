@@ -176,4 +176,33 @@ props：
 ```js
 <BaseModal><Text>这是一个基础模态框</Text><BaseModal>
 ``` 
-
+  
+Message（带图标的消息提示框）
+---
+![Message-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Message.png)  
+```js
+<Message
+  type="error"
+  title="这是标题"
+  content="这是内容"
+  option={[
+    {
+      text: 'cancle',
+      onPress: () => { alert('yes') },
+    },
+    {
+      text: 'ok',
+      style: {
+        borderWidth: 0,
+        backgroundColor: "#3B7CFF"
+      },
+      textStyle: { color: "#fff" },
+    },
+  ]}
+/>
+```
+props：  
+* type: PropTypes.oneOf(['info', 'warning', 'error', 'success']), 指定消息框类型，默认为info。
+* title: PropTypes.string, 消息框的标题
+* content: PropTypes.string, 消息框的内容
+* option: PropTypes.array, 底部按钮的配置，具体配置如上代码段，默认有一个ok按钮。如有需求可以自定义按钮，设置按钮的显示内容、样式以及按钮的触摸回调函数。

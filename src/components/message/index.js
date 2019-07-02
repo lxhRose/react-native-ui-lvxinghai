@@ -149,7 +149,7 @@ Message.propTypes = {
     type: PropTypes.oneOf(['info', 'warning', 'error', 'success']),
     title: PropTypes.string,
     content: PropTypes.string,
-    option: PropTypes.object,
+    option: PropTypes.array,
 };
 
 Message.defaultProps = {
