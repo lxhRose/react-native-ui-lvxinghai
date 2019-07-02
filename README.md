@@ -32,7 +32,7 @@ import { Radio } from "react-native-ui-lvxinghai";
 ```
 props：  
     * id: PropTypes.string.isRequired，必选。  
-    单选按钮的唯一标识。
+    单选按钮的唯一标识。  
     * label: PropTypes.string，可选。  
     单选按钮的文字描述。
 * defaultChecked: PropTypes.bool，可选。默认选中否？
