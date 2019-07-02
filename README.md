@@ -206,3 +206,4 @@ props：
 * title: PropTypes.string, 消息框的标题
 * content: PropTypes.string, 消息框的内容
 * option: PropTypes.array, 底部按钮的配置，具体配置如上代码段，默认有一个ok按钮。如有需求可以自定义按钮，设置按钮的显示内容、样式以及按钮的触摸回调函数。
+* closeCallback: PropTypes.func, 关闭消息框的回调函数。
