@@ -5,7 +5,8 @@ import {
     Button,
     Table,
     Radio,
-    BaseModal
+    BaseModal,
+    Message
 } from "./src/index";
 import adap from "./src/utils/adaptation";
 
@@ -92,6 +93,25 @@ export default class App extends Component {
                 <BaseModal
                     visible={this.state.visible}
                     closeModal={() => this.setState({ visible: false })} />
+                <Message
+                    type="error"
+                    title="这是标题"
+                    content="这是内容"
+                    option={[
+                        {
+                            text: 'cancle',
+                            onPress: () => { alert('yes') },
+                        },
+                        {
+                            text: 'ok',
+                            style: {
+                                borderWidth: 0,
+                                backgroundColor: "#3B7CFF"
+                            },
+                            textStyle: { color: "#fff" },
+                        },
+                    ]}
+                />
             </View>
         );
     }

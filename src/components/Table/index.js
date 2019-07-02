@@ -200,6 +200,7 @@ const styles = StyleSheet.create({
         height: HEIGHT,
     },
     rowItem: {
+        width: "100%",
         color: '#1C2024'
     },
     wrap: {

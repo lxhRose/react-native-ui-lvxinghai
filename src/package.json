@@ -1,6 +1,6 @@
 {
     "name": "react-native-ui-lvxinghai",
-    "version": "2.5.2",
+    "version": "2.6.0",
     "description": "react-native-ui",
     "main": "index.js",
     "scripts": {
@@ -16,6 +16,10 @@
         "react-native-ui-lvxinghai",
         "Radio",
         "RadioGroup",
+        "Table",
+        "Modal",
+        "Message",
+        "Alert",
         "Button"
     ],
     "author": "lvxinghai",

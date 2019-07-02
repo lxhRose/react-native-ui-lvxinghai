@@ -35,7 +35,7 @@ export default class Button extends Component {
                 onLayout: this.changeViewLayout,
                 style: this.props.disabled
                     ? { ...btnStyle, ...styles.disabledStyle }
-                    : btnStyle
+                    : { height: 25, ...btnStyle }
             },
             <Text style={
                 this.props.disabled
