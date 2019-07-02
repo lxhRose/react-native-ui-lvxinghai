@@ -31,10 +31,8 @@ import { Radio } from "react-native-ui-lvxinghai";
   radioColor="blue" />
 ```
 props：  
-    * id: PropTypes.string.isRequired，必选。  
-    单选按钮的唯一标识。  
-    * label: PropTypes.string，可选。  
-    单选按钮的文字描述。
+* id: PropTypes.string.isRequired，必选。单选按钮的唯一标识。    
+* label: PropTypes.string，可选。单选按钮的文字描述。  
 * defaultChecked: PropTypes.bool，可选。默认选中否？
 * onChange: PropTypes.func，可选。点击的回调函数，返回当前选中情况。
 * style: PropTypes.object，可选。单选按钮以及label的样式设置，可以设置字体大小行高颜色等。
