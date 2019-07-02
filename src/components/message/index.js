@@ -20,6 +20,7 @@ export default class Message extends Component {
         this.setState({
             visible: false
         });
+        this.props.closeCallback && this.props.closeCallback();
     }
 
     render() {
@@ -125,6 +126,7 @@ const styles = StyleSheet.create({
         width: 240,
         fontSize: 16,
         lineHeight: 20,
+        color: '#333',
     },
     body: {
         padding: 15,
@@ -132,7 +134,8 @@ const styles = StyleSheet.create({
     },
     bodyText: {
         fontSize: 14,
-        lineHeight: 20
+        lineHeight: 20,
+        color: '#333',
     },
     footer: {
         flex: 1,
@@ -150,6 +153,7 @@ Message.propTypes = {
     title: PropTypes.string,
     content: PropTypes.string,
     option: PropTypes.array,
+    closeCallback: PropTypes.func,
 };
 
 Message.defaultProps = {

@@ -14,7 +14,11 @@ export default class BaseModal extends Component {
             return React.createElement(View, { style: styles.content },
                 <>
                     {!this.props.hideCloseBtn &&
-                        <TouchableOpacity onPress={this.props.closeModal} style={styles.closeButton}>
+                        <TouchableOpacity
+                            onPress={this.props.closeModal}
+                            style={styles.closeButton}
+                            activeOpacity={0.7}
+                        >
                             <Text style={styles.text}>×</Text>
                         </TouchableOpacity>
                     }

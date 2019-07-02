@@ -55,6 +55,8 @@ export default class App extends Component {
                     onPress={() => { }}
                     style={styles.btnStyle}
                     textStyle={styles.btnTextStyle} />
+                <Button
+                    text="确认" />
                 <Text>Radio：</Text>
                 <Radio
                     defaultChecked={false}

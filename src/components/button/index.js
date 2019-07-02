@@ -33,6 +33,7 @@ export default class Button extends Component {
                 onPress: this.props.onPress,
                 disabled: this.props.disabled,
                 onLayout: this.changeViewLayout,
+                activeOpacity: 0.7,
                 style: this.props.disabled
                     ? { ...btnStyle, ...styles.disabledStyle }
                     : { height: 25, ...btnStyle }
