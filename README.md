@@ -1,7 +1,7 @@
 react-native-ui-lvxinghai
 ===
 简介：  
-===
+---
 这是一套基于React-native的组件库，目前仅支持adroid，你可以根据自己的需求导入需要使用的组件。    
   
 安装：  
