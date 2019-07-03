@@ -31,13 +31,13 @@ import { Radio } from "react-native-ui-lvxinghai";
   radioColor="blue" />
 ```
 props：  
-* id: PropTypes.string.isRequired，必选。单选按钮的唯一标识。    
-* label: PropTypes.string，可选。单选按钮的文字描述。  
-* defaultChecked: PropTypes.bool，可选。默认选中否？
-* onChange: PropTypes.func，可选。点击的回调函数，返回当前选中情况。
-* style: PropTypes.object，可选。单选按钮以及label的样式设置，可以设置字体大小行高颜色等。
-* radioColor: PropTypes.string，可选。单独设置Radio（label除外）的颜色。
-* groupCheckedId: PropTypes.string，可选。提供给RadioGroup使用，指定当前选中的单选按钮id，该单选按钮以外的组成员选中状态置为false。
+* id（string）：必选。单选按钮的唯一标识。    
+* label（string）：可选。单选按钮的文字描述。  
+* defaultChecked（bool）：可选。默认选中否？
+* onChange（func）：可选。点击的回调函数，返回当前选中情况。
+* style（object）：可选。单选按钮以及label的样式设置，可以设置字体大小行高颜色等。
+* radioColor（string）：可选。单独设置Radio（label除外）的颜色。
+* groupCheckedId（string）：可选。提供给RadioGroup使用，指定当前选中的单选按钮id，该单选按钮以外的组成员选中状态置为false。
 
 RadioGroup（单选按钮组）  
 ---
@@ -169,10 +169,10 @@ import { BaseModal } from "react-native-ui-lvxinghai";
   closeModal={() => this.setState({ visible: false })} />
 ```
 props：  
-* visible: PropTypes.bool,可选。控制模态框的显示隐藏；  
-* closeModal: PropTypes.func,可选。关闭模态框的函数，点击右上角的关闭按钮时触发；  
-* hideCloseBtn: PropTypes.bool,可选。隐藏自带的关闭按钮；  
-* children: PropTypes.any,可选。子元素，即要在模态框中显示的内容，例如  
+* visible（bool）：可选。控制模态框的显示隐藏；  
+* closeModal（func）：可选。关闭模态框的函数，点击右上角的关闭按钮时触发；  
+* hideCloseBtn（bool）：可选。隐藏自带的关闭按钮；  
+* children（any）：可选。子元素，即要在模态框中显示的内容，例如  
 ```js
 <BaseModal><Text>这是一个基础模态框</Text><BaseModal>
 ``` 
@@ -202,8 +202,8 @@ Message（带图标的消息提示框）
 />
 ```
 props：  
-* type: PropTypes.oneOf(['info', 'warning', 'error', 'success']), 指定消息框类型，默认为info。
-* title: PropTypes.string, 消息框的标题
-* content: PropTypes.string, 消息框的内容
-* option: PropTypes.array, 底部按钮的配置，具体配置如上代码段，默认有一个ok按钮。如有需求可以自定义按钮，设置按钮的显示内容、样式以及按钮的触摸回调函数。
-* closeCallback: PropTypes.func, 关闭消息框的回调函数。
+* type: PropTypes.oneOf(['info', 'warning', 'error', 'success']), 可选。指定消息框类型，默认为info。
+* title（string）：可选。消息框的标题
+* content（string）：可选。消息框的内容
+* option（array）：可选。底部按钮的配置，具体配置如上代码段，默认有一个ok按钮。如有需求可以自定义按钮，设置按钮的显示内容、样式以及按钮的触摸回调函数。
+* closeCallback（func）： 可选。关闭消息框的回调函数。
