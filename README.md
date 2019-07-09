@@ -10,8 +10,8 @@ react-native-ui-lvxinghai
   
 目录：
 ---
-* Radio（单选按钮）(#Radio（单选按钮）)
-* RadioGroup（单选按钮组）(#RadioGroup（单选按钮组）) 
+* [Radio（单选按钮）](#Radio（单选按钮）)
+* [RadioGroup（单选按钮组）](#RadioGroup（单选按钮组）) 
   
 使用：  
 ---
