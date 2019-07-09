@@ -18,8 +18,7 @@ react-native-ui-lvxinghai
 6、[Message（带图标的消息提示框）](#Message带图标的消息提示框)   
 7、[RNECharts（对echarts的封装）](#RNECharts对echarts的封装)  
    
-使用：  
----
+  
 Radio（单选按钮）  
 ---
 ![Radio-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Radio.png)  
