@@ -210,8 +210,10 @@ props：
   
 RNECharts（对echarts的封装） 
 ---
-![Message-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Message.png)
+![RNECharts-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/echarts.png)
 ```js
+import { RNECharts } from "react-native-ui-lvxinghai";
+...
 componentDidMount() {
   /**
    * 连续不间断刷新图标demo
