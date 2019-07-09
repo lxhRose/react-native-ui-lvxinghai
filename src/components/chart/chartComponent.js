@@ -81,8 +81,8 @@ export default class RNECharts extends Component {
                     backgroundColor: this.props.backgroundColor || 'transparent'
                 }}
                 source={{
-                    uri: 'file:///android_asset/echarts/chart.html',
-                    baseUrl: 'file:///android_asset/echarts/'
+                    uri: 'file:///android_asset/chart.html',
+                    baseUrl: 'file:///android_asset/'
                 }}
                 injectedJavaScript={renderChart(this.props)}
             />
