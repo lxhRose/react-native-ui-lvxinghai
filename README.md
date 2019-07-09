@@ -12,7 +12,12 @@ react-native-ui-lvxinghai
 ---
 * [Radio（单选按钮）](#Radio单选按钮)
 * [RadioGroup（单选按钮组）](#RadioGroup单选按钮组) 
-  
+* [Button（按钮）](#Button按钮)
+* [Table（表格）](#Table表格) 
+* [BaseModal（基础模态框）](#BaseModal基础模态框)
+* [Message（带图标的消息提示框）](#Message带图标的消息提示框) 
+* [RNECharts（对echarts的封装）](#RNECharts对echarts的封装)
+   
 使用：  
 ---
 Radio（单选按钮）  
