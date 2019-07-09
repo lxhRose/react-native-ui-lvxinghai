@@ -4,6 +4,7 @@ import {
     Dimensions
 } from 'react-native';
 import { WebView } from 'react-native-webview';
+import PropTypes from 'prop-types';
 
 /*获取设备的屏幕宽度和高度*/
 const { width, height } = Dimensions.get('window');
@@ -88,4 +89,12 @@ export default class RNECharts extends Component {
             />
         )
     }
-}  
+}
+
+
+RNECharts.propTypes = {
+    option: PropTypes.object.isRequired,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    backgroundColor: PropTypes.string,
+};

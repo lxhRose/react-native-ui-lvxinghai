@@ -220,6 +220,11 @@ props：
 RNECharts（对echarts的封装） 
 ---
 ![RNECharts-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/echarts.png)
+  
+在你使用之前需要完成以下三个步骤：    
+* 将src/components/chart/chart.html文件复制到你项目中的android\app\src\main\assets文件夹下。  
+* 执行 npm i react-native-webview    
+* 执行 react-native link react-native-webview  
 ```js
 import { RNECharts } from "react-native-ui-lvxinghai";
 ...
@@ -285,6 +290,8 @@ render() {
 }
 ```
 props:
-* option：必选。echarts的配置，参照[ECharts Documentation](https://echarts.baidu.com/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts)   
-注意：在你使用之前需要将src/components/chart/chart.html文件复制到你项目中的android\app\src\main\assets文件夹下。
+* option（object），必选。echarts的配置，参照[ECharts Documentation](https://echarts.baidu.com/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts)   
+* width（number），可选。图表宽度；
+* height（number），可选。图表高度；
+* backgroundColor（string），可选。背景色。
 
