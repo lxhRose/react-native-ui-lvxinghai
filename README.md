@@ -207,3 +207,72 @@ props：
 * content（string）：可选。消息框的内容
 * option（array）：可选。底部按钮的配置，具体配置如上代码段，默认有一个ok按钮。如有需求可以自定义按钮，设置按钮的显示内容、样式以及按钮的触摸回调函数。
 * closeCallback（func）： 可选。关闭消息框的回调函数。
+  
+RNECharts（对echarts的封装） 
+---
+![Message-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/Message.png)
+```js
+componentDidMount() {
+  /**
+   * 连续不间断刷新图标demo
+   */
+  this.timer = setInterval(() => {
+      let data = [5, 20, 36, 10, 10, 20].map((v) => {
+          return Math.random() * v
+      })
+      var option = {
+          title: {
+              text: 'ECharts 入门示例'
+          },
+          tooltip: {},
+          legend: {
+              data: ['销量']
+          },
+          xAxis: {
+              data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+          },
+          yAxis: {},
+          series: [{
+              name: '销量',
+              type: 'bar',
+              data: data
+          }]
+      };
+      /**普通图表刷新通过改变state内部的option实现，缺点就是组件不断更新，导致图表组件重头开始渲染，没有连贯效果
+       * 在chartComponent里面封装的setNewOption方法，
+       * 目的是为了调用myChart.setOption(option)
+       * 达到不抖屏不更新state刷新图表
+       * */
+      this.refs.charts.setNewOption(option)
+  }, 2000)
+}
+
+render() {
+  var option = {
+    title: {
+      text: 'ECharts 入门示例'
+    },
+    tooltip: {},
+    legend: {
+      data: ['销量']
+    },
+    xAxis: {
+      data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+    },
+    yAxis: {},
+    series: [{
+      name: '销量',
+      type: 'bar',
+      data: [5, 20, 36, 10, 10, 20]
+    }]
+  };
+  return(
+    <RNECharts
+      ref="charts"
+      option={option} />
+  )
+}
+```
+props:
+* option：必选。echarts的配置，参照[ECharts Documentation](https://echarts.baidu.com/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts)   
+
