@@ -220,6 +220,7 @@ props：
 RNECharts（对echarts的封装） 
 ---
 ![RNECharts-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/echarts.png)
+    注意：在你使用之前需要将src/components/chart/chart.html文件复制到你项目中的android\app\src\main\assets文件夹下。
 ```js
 import { RNECharts } from "react-native-ui-lvxinghai";
 ...
@@ -286,5 +287,4 @@ render() {
 ```
 props:
 * option：必选。echarts的配置，参照[ECharts Documentation](https://echarts.baidu.com/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts)   
-注意：在你使用之前需要将src/components/chart/chart.html文件复制到你项目中的android\app\src\main\assets文件夹下。
 
