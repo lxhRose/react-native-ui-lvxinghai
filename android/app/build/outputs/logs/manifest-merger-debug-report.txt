@@ -5,6 +5,7 @@ INJECTED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\main\AndroidMa
 INJECTED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\main\AndroidManifest.xml:1:1-26:12
 INJECTED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\main\AndroidManifest.xml:1:1-26:12
 MERGED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\main\AndroidManifest.xml:1:1-26:12
+MERGED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-23:12
 MERGED from [com.facebook.react:react-native:0.59.9] C:\Users\81492\.gradle\caches\transforms-2\files-2.1\73febff49304d49522c3705084c95b50\AndroidManifest.xml:2:1-13:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\81492\.gradle\caches\transforms-2\files-2.1\c84c6fdacdd49f2bce6e6451a0e5b230\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\81492\.gradle\caches\transforms-2\files-2.1\c5e02bda46a65c67bfae5e86a3845518\AndroidManifest.xml:17:1-22:12
@@ -67,6 +68,8 @@ application
 ADDED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\main\AndroidManifest.xml:6:5-24:19
 MERGED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\main\AndroidManifest.xml:6:5-24:19
 MERGED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\main\AndroidManifest.xml:6:5-24:19
+MERGED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-21:19
+MERGED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-21:19
 MERGED from [com.facebook.react:react-native:0.59.9] C:\Users\81492\.gradle\caches\transforms-2\files-2.1\73febff49304d49522c3705084c95b50\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.59.9] C:\Users\81492\.gradle\caches\transforms-2\files-2.1\73febff49304d49522c3705084c95b50\AndroidManifest.xml:11:5-20
 MERGED from [com.android.support:support-compat:28.0.0] C:\Users\81492\.gradle\caches\transforms-2\files-2.1\c12f9d83c3a016a2c3d4ca37793564dc\AndroidManifest.xml:22:5-94
@@ -129,6 +132,8 @@ uses-sdk
 INJECTED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\main\AndroidManifest.xml
 INJECTED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\main\AndroidManifest.xml
+MERGED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.59.9] C:\Users\81492\.gradle\caches\transforms-2\files-2.1\73febff49304d49522c3705084c95b50\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.59.9] C:\Users\81492\.gradle\caches\transforms-2\files-2.1\73febff49304d49522c3705084c95b50\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\81492\.gradle\caches\transforms-2\files-2.1\c84c6fdacdd49f2bce6e6451a0e5b230\AndroidManifest.xml:20:5-44
@@ -209,3 +214,19 @@ uses-permission#android.permission.SYSTEM_ALERT_WINDOW
 ADDED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\debug\AndroidManifest.xml:5:5-77
 	android:name
 		ADDED from D:\mySelf\react-native-ui-lvxinghai\android\app\src\debug\AndroidManifest.xml:5:22-75
+provider#com.reactnativecommunity.webview.RNCWebViewFileProvider
+ADDED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-20:20
+	android:grantUriPermissions
+		ADDED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
+	android:authorities
+		ADDED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-64
+	android:exported
+		ADDED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
+	android:name
+		ADDED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-83
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-19:63
+	android:resource
+		ADDED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:17-60
+	android:name
+		ADDED from [:react-native-webview] D:\mySelf\react-native-ui-lvxinghai\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-67

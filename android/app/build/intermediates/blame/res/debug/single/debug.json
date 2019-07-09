@@ -1404,6 +1404,10 @@
         "source": "C:\\Users\\81492\\.gradle\\caches\\transforms-2\\files-2.1\\c84c6fdacdd49f2bce6e6451a0e5b230\\res\\drawable-mdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
+        "merged": "D:\\mySelf\\react-native-ui-lvxinghai\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml_file_provider_paths.xml.flat",
+        "source": "D:\\mySelf\\react-native-ui-lvxinghai\\node_modules\\react-native-webview\\android\\build\\intermediates\\packaged_res\\debug\\xml\\file_provider_paths.xml"
+    },
+    {
         "merged": "D:\\mySelf\\react-native-ui-lvxinghai\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
         "source": "C:\\Users\\81492\\.gradle\\caches\\transforms-2\\files-2.1\\c84c6fdacdd49f2bce6e6451a0e5b230\\res\\drawable-mdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
     },

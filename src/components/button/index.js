@@ -16,7 +16,8 @@ export default class Button extends Component {
 
     changeViewLayout = (event) => {
         this.setState({
-            lineHeight: event.nativeEvent.layout.height - 10
+            lineHeight: event.nativeEvent.layout.height
+                - (this.props.style && this.props.style.borderWidth || styles.button.borderWidth) * 2
         });
     }
 
@@ -54,9 +55,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 1,
         borderColor: '#ddd',
-        paddingTop: 5,
         paddingRight: 15,
-        paddingBottom: 5,
         paddingLeft: 15,
     },
     disabledStyle: {

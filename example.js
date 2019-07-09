@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import {
     RadioGroup,
     Button,
     Table,
     Radio,
     BaseModal,
-    Message
+    Message,
+    RNECharts,
 } from "./src/index";
 import adap from "./src/utils/adaptation";
 
@@ -17,11 +18,74 @@ export default class App extends Component {
             checked: false,
             visible: false
         }
+        this.timer = null;
+    }
+
+    componentDidMount() {
+        /**
+         * 连续不间断刷新图标demo
+         */
+        this.timer = setInterval(() => {
+            let data = [5, 20, 36, 10, 10, 20].map((v) => {
+                return Math.random() * v
+            })
+            var option = {
+                title: {
+                    text: 'ECharts 入门示例'
+                },
+                tooltip: {},
+                legend: {
+                    data: ['销量']
+                },
+                xAxis: {
+                    data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+                },
+                yAxis: {},
+                series: [{
+                    name: '销量',
+                    type: 'bar',
+                    data: data
+                }]
+            };
+            /**普通图表刷新通过改变state内部的option实现，缺点就是组件不断更新，导致图表组件重头开始渲染，没有连贯效果
+             * 在chartComponent里面封装的setNewOption方法，
+             * 目的是为了调用myChart.setOption(option)
+             * 达到不抖屏不更新state刷新图表
+             * */
+            this.refs.charts.setNewOption(option)
+        }, 2000)
+    }
+
+    componentWillUnmount = () => {
+        clearInterval(this.timer);
     }
 
     render() {
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
+                <Text>eCharts：</Text>
+                <RNECharts
+                    ref="charts"
+                    option={option} />
                 <Text>RadioGroup：</Text>
                 <RadioGroup
                     onChange={(id) => { }}
@@ -95,7 +159,7 @@ export default class App extends Component {
                 <BaseModal
                     visible={this.state.visible}
                     closeModal={() => this.setState({ visible: false })} />
-                <Message
+                {/* <Message
                     type="error"
                     title="这是标题"
                     content="这是内容"
@@ -113,8 +177,8 @@ export default class App extends Component {
                             textStyle: { color: "#fff" },
                         },
                     ]}
-                />
-            </View>
+                /> */}
+            </ScrollView>
         );
     }
 }
