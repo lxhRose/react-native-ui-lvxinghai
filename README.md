@@ -220,8 +220,9 @@ props：
 RNECharts（对echarts的封装） 
 ---
 ![RNECharts-img](https://raw.githubusercontent.com/lxhRose/react-native-ui-lvxinghai/master/image/echarts.png)
-注意：  
-* 在你使用之前需要将src/components/chart/chart.html文件复制到你项目中的android\app\src\main\assets文件夹下。  
+  
+在你使用之前需要完成以下三个步骤：    
+* 将src/components/chart/chart.html文件复制到你项目中的android\app\src\main\assets文件夹下。  
 * 执行 npm i react-native-webview    
 * 执行 react-native link react-native-webview  
 ```js
