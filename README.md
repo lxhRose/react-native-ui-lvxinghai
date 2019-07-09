@@ -8,6 +8,11 @@ react-native-ui-lvxinghai
 ---
     npm i react-native-ui-lvxinghai    
   
+目录：
+---
+* Radio（单选按钮）
+* RadioGroup（单选按钮组） 
+  
 使用：  
 ---
 Radio（单选按钮）  
