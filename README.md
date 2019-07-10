@@ -290,7 +290,7 @@ render() {
 }
 ```
 props:
-* option（object），必选。echarts的配置，参照[ECharts 配置项](https://echarts.baidu.com/option.html#title)   
+* option（object），必选。echarts的配置，请参照[ECharts 配置项](https://echarts.baidu.com/option.html#title)   
 * width（number），可选。图表宽度；
 * height（number），可选。图表高度；
 * backgroundColor（string），可选。背景色。
