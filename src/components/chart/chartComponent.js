@@ -24,7 +24,7 @@ function toString(obj) {
 
 /*在WebView加载外部html后执行的js，主要是初始化echart图表*/
 function renderChart(props) {
-    const height = `${props.height || 400}px`;
+    const height = `${(props.height || 400) - 25}px`;
     const width = props.width ? `${props.width}px` : 'auto';
     return `
         document.getElementById('main').style.height = "${height}";

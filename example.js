@@ -11,6 +11,75 @@ import {
 } from "./src/index";
 import adap from "./src/utils/adaptation";
 
+const option2 = {
+    title: {
+        text: '目前住院床数',
+        x: 'center',
+        textStyle: {
+            fontSize: adap.font(42),
+            color: '#011712'
+        },
+        top: "60%"
+    },
+    tooltip: {
+        show: false
+    },
+    legend: {
+        left: 'center',
+        itemWidth: adap.w(50),
+        itemHeight: adap.h(42),
+        data: ['占用', '空床'],
+        textStyle: {
+            fontSize: adap.font(42)
+        }
+    },
+    series: [
+        {
+            type: 'pie',
+            startAngle: 180,
+            radius: '100%',
+            center: ['50%', '60%'],
+            hoverAnimation: false,
+            label: {
+                normal: {
+                    show: true,
+                    position: 'inside',
+                    formatter: '{c}',
+                    color: '#ddd'
+                }
+            },
+            data: [
+                {
+                    name: '占用',
+                    value: 300,
+                    itemStyle: {
+                        normal: {
+                            color: '#00C889'
+                        }
+                    }
+                },
+                {
+                    name: '空床',
+                    value: 200,
+                    itemStyle: {
+                        normal: {
+                            color: '#ddd'
+                        }
+                    }
+                },
+                {
+                    value: 500, label: { normal: { position: 'inside' } },
+                    itemStyle: {
+                        normal: {
+                            color: 'rgba(0, 0, 0, 0)'
+                        }
+                    }
+                },
+            ],
+        }
+    ]
+};
+
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -52,7 +121,7 @@ export default class App extends Component {
              * 目的是为了调用myChart.setOption(option)
              * 达到不抖屏不更新state刷新图表
              * */
-            this.refs.charts.setNewOption(option)
+            // this.refs.charts.setNewOption(option)
         }, 2000)
     }
 
@@ -85,7 +154,9 @@ export default class App extends Component {
                 <Text>eCharts：</Text>
                 <RNECharts
                     ref="charts"
-                    option={option} />
+                    width={200}
+                    height={200}
+                    option={option2} />
                 <Text>RadioGroup：</Text>
                 <RadioGroup
                     onChange={(id) => { }}
