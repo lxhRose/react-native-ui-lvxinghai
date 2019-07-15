@@ -136,13 +136,16 @@ Table（表格）
 ```js
 import { Table } from "react-native-ui-lvxinghai";
 <Table
+  ref="table"
   head={[
     { id: 'hldj', name: '护理等级', flex: 1, width: 300 },
     { id: 'cwhz', name: '床位患者', flex: 5, width: 300 },
-    { id: 'js', name: '计数', flex: 1, render: (data) => <Text>This is a element:{data.js}</Text> },
+    { id: 'js', name: '计数', flex: 1, render: (data, index) => <Text onPress={() => this.refs.table.clickRow(index)}>This is a element:{data.js}</Text>,
   ]}
   data={[
-    { hldj: 1, cwhz: 2, js: 3 },
+    { hldj: 1, cwhz: 2, js: 3, children: <View style={{ height: 300 }}>
+                                <Text>子项</Text>
+                            </View> },
     { hldj: 1, cwhz: 2, js: 3 },
     { hldj: 1, cwhz: 2, js: 3 },
   ]}
@@ -158,8 +161,8 @@ import { Table } from "react-native-ui-lvxinghai";
   props：
   * head(Array)：必选。表头信息；  
   其中flex、width和bodyColStyle为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；bodyColStyle设置这一列body的样式（包括背景色字体颜色大小等等；注意，不是head的样式）。    
-  其中render(data)可以用元素替换表中的内容，data为一整行值的对象。注意：如果是字符串或者数字，请务必使用Text标签包裹起来，使用bodyTextStyle设置的样式对该元素无效，需要单独设置。
-  * data（Array）：必选。数据，注意数据字段名称与表头id一一对应；  
+  其中render(data, index)可以用元素替换表中的内容，data为一整行值的对象。注意：如果是字符串或者数字，请务必使用Text标签包裹起来，使用bodyTextStyle设置的样式对该元素无效，需要单独设置。
+  * data（Array）：必选。数据，注意数据字段名称与表头id一一对应；需要注意的是children字段为预留字段，用以向每行传递需要展示的子项。  
   * style（obj）：可选。表格样式；  
   * headStyle（obj）：可选。设置表头样式。  
   * headTextStyle（obj）：可选。设置表头单元格文字样式。  
@@ -168,6 +171,9 @@ import { Table } from "react-native-ui-lvxinghai";
   * bodyTextStyle（obj）：可选。设置表格单元格文字样式。  
   * horizontal（bool）：可选。标识是否可横向滑动，即表头过长时，显示横向滚动条。  
   * evenRowColor（string）：可选。设置表格内容偶数行的颜色，传值类型为为颜色字符串，如："#fff"、"red"。
+  * ref: 另外预留了一个clickRow方法供外部调用，以展开每行的子项。例如：this.refs.table.clickRow(index)    
+  * childrenStyle（obj）：可选。设置子项包裹框样式。    
+  
   
 BaseModal（基础模态框）  
 ---  
