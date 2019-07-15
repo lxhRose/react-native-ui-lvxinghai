@@ -157,7 +157,7 @@ import { Table } from "react-native-ui-lvxinghai";
   ```
   props：
   * head(Array)：必选。表头信息；  
-  其中flex和width为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；  
+  其中flex、width和backgroundColor为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；backgroundColor设置这一列body的背景色（注意，不是head的背景色）。    
   其中render(data)可以用元素替换表中的内容，data为一整行值的对象。注意：如果是字符串或者数字，请务必使用Text标签包裹起来，使用bodyTextStyle设置的样式对该元素无效，需要单独设置。
   * data（Array）：必选。数据，注意数据字段名称与表头id一一对应；  
   * style（obj）：可选。表格样式；  
