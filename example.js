@@ -37,8 +37,8 @@ const option2 = {
         {
             type: 'pie',
             startAngle: 180,
-            radius: '100%',
-            center: ['50%', '60%'],
+            radius: '80%',
+            center: ['50%', '50%'],
             hoverAnimation: false,
             label: {
                 normal: {
@@ -71,7 +71,7 @@ const option2 = {
                     value: 500, label: { normal: { position: 'inside' } },
                     itemStyle: {
                         normal: {
-                            color: 'rgba(0, 0, 0, 0)'
+                            color: 'rgba(0, 0, 0, 0.5)'
                         }
                     }
                 },
@@ -151,12 +151,18 @@ export default class App extends Component {
 
         return (
             <ScrollView style={styles.container}>
-                <Text>eCharts：</Text>
-                <RNECharts
-                    ref="charts"
-                    width={200}
-                    height={200}
-                    option={option2} />
+                {/* <Text>eCharts：</Text>
+                <View style={{
+                    width: 200,
+                    height: 200,
+                    backgroundColor: '#ddd'
+                }}>
+                    <RNECharts
+                        ref="charts"
+                        width={200}
+                        height={200}
+                        option={option2} />
+                </View>
                 <Text>RadioGroup：</Text>
                 <RadioGroup
                     onChange={(id) => { }}
@@ -207,25 +213,35 @@ export default class App extends Component {
                         color: '#333'
                     }}
                     radioColor="blue" />
-                <Text>Table：</Text>
+                <Text>Table：</Text> */}
                 <Table
                     head={[
                         { id: 'hldj', name: '护理等级', flex: 1, width: 300 },
                         { id: 'cwhz', name: '床位患者', flex: 5, width: 300 },
-                        { id: 'js', name: '计数', flex: 1, render: (data) => <View><Text>This is a element:{data.js}</Text></View> },
+                        {
+                            id: 'js', name: '计数', flex: 1,
+                            render: (data, index) => <Text onPress={() => this.refs.table.clickRow(index)}>This is a element:{data.js}</Text>
+                        },
                     ]}
+                    ref="table"
                     data={[
-                        { hldj: 1, cwhz: 2, js: 3 },
+                        {
+                            hldj: 1, cwhz: 2, js: 3,
+                            children: <View style={{ height: 300 }}>
+                                <Text>子项</Text>
+                            </View>
+                        },
                         { hldj: 1, cwhz: 2, js: 3 },
                         { hldj: 1, cwhz: 2, js: 3 },
                     ]}
-                    style={{ width: 800, height: 550 }}
+                    style={{ width: 800, height: 500 }}
                     headStyle={{ height: 50 }}
                     headTextStyle={{ width: 200 }}
                     bodyStyle={{ backgroundColor: '#fff' }}
                     bodyRowStyle={{ height: 50 }}
                     bodyTextStyle={{ color: '#333' }}
-                    evenRowColor="#4ACA6D"
+                    hasBorder='all'
+                    // evenRowColor="#4ACA6D"
                     horizontal />
                 <BaseModal
                     visible={this.state.visible}

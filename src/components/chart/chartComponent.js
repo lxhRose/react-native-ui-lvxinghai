@@ -24,7 +24,7 @@ function toString(obj) {
 
 /*在WebView加载外部html后执行的js，主要是初始化echart图表*/
 function renderChart(props) {
-    const height = `${(props.height || 400) - 25}px`;
+    const height = `${props.height || 400}px`;
     const width = props.width ? `${props.width}px` : 'auto';
     return `
         document.getElementById('main').style.height = "${height}";
@@ -69,24 +69,28 @@ export default class RNECharts extends Component {
             {
                 style: {
                     width: this.props.width || width,
-                    flex: 1,
                     height: this.props.height || 400,
                 }
             },
-            <WebView
-                ref="chart"
-                originWhiteList={['*']}
-                scrollEnabled={false}
-                style={{
-                    height: this.props.height || 400,
-                    backgroundColor: this.props.backgroundColor || 'transparent'
-                }}
-                source={{
-                    uri: 'file:///android_asset/chart.html',
-                    baseUrl: 'file:///android_asset/'
-                }}
-                injectedJavaScript={renderChart(this.props)}
-            />
+            <View style={{
+                width: this.props.width || width,
+                height: (this.props.height || 400) + 25,
+            }}>
+                <WebView
+                    ref="chart"
+                    originWhiteList={['*']}
+                    scrollEnabled={false}
+                    style={{
+                        height: this.props.height || 400,
+                        backgroundColor: this.props.backgroundColor || 'transparent'
+                    }}
+                    source={{
+                        uri: 'file:///android_asset/chart.html',
+                        baseUrl: 'file:///android_asset/'
+                    }}
+                    injectedJavaScript={renderChart(this.props)}
+                />
+            </View>
         )
     }
 }
