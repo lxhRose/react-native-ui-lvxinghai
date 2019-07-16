@@ -235,7 +235,6 @@ export default class App extends Component {
                         { hldj: 1, cwhz: 2, js: 3 },
                     ]}
                     style={{ width: 800, height: 500 }}
-                    headStyle={{ height: 50 }}
                     headTextStyle={{ width: 200 }}
                     bodyStyle={{ backgroundColor: '#fff' }}
                     bodyRowStyle={{ height: 50 }}
