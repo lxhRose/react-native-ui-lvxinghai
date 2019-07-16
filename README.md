@@ -174,7 +174,7 @@ import { Table } from "react-native-ui-lvxinghai";
   * evenRowColor（string）：可选。设置表格内容偶数行的颜色，传值类型为为颜色字符串，如："#fff"、"red"。
   * ref: 另外预留了一个clickRow方法供外部调用，以展开每行的子项。例如：this.refs.table.clickRow(index)    
   * childrenStyle（obj）：可选。设置子项包裹框样式。    
-  * hasBorder(oneOf(['row', 'all']))；可选。指定是否需要border，以及行border还是行列都需要。
+  * hasBorder(oneOf(['row', 'all']))；可选。指定是否需要border，以及行border（'row'）还是行列都需要('all')。
   
   
 BaseModal（基础模态框）  
