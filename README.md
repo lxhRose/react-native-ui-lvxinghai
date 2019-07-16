@@ -163,7 +163,7 @@ import { Table } from "react-native-ui-lvxinghai";
   * head(Array)：必选。表头信息；  
   其中flex、width和bodyColStyle为可选参数，默认值flex=1，width=100；当horizontal = false时，flex生效，设置一个单元格的宽度比例值；horizontal=true时，width生效，设置单元格的宽度；bodyColStyle设置这一列body的样式（包括背景色字体颜色大小等等；注意，不是head的样式）。    
   其中render(data, index)可以用元素替换表中的内容，data为一整行值的对象。注意：如果是字符串或者数字，请务必使用Text标签包裹起来，使用bodyTextStyle设置的样式对该元素无效，需要单独设置。
-  * data（Array）：必选。数据，注意数据字段名称与表头id一一对应；需要注意的是children字段为预留字段，用以向每行传递需要展示的子项。  
+  * data（Array）：必选。数据，注意数据字段名称与表头id一一对应；需要注意的是children字段为预留字段，用以向每行传递需要展示的子项（展开子项请参照下方ref）。  
   * style（obj）：可选。表格样式；  
   * headStyle（obj）：可选。设置表头样式。  
   * headTextStyle（obj）：可选。设置表头单元格文字样式。  
