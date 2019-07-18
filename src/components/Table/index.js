@@ -18,9 +18,12 @@ export default class Table extends Component {
             oldHead: [],
             HeightArr: [],
             bodyHeight: HEIGHT,
-            openChildrenArr: []
+            openChildren: -1,
         }
         this.rowRefArr = [];
+        this.colRefArr = [];
+        this.befIndex = -1;
+        this.Arr = [];
         this.clickRow = this.clickRow.bind(this);
     }
 
@@ -47,24 +50,26 @@ export default class Table extends Component {
         } else {
             HeightArr[index] = _height;
         }
-
+        // 设置行高
         this.rowRefArr[index].setNativeProps({
             style: {
                 height: HeightArr[index] + borderWidth,
             }
         });
+        // 设置单元格高度
+        this.colRefArr[index].map((item) => {
+            item.setNativeProps({
+                style: {
+                    height: HeightArr[index]
+                }
+            });
+        })
     }
 
     clickRow = (index) => {
-        if (this.state.openChildrenArr.includes(index)) {
-            this.setState({
-                openChildrenArr: [...this.state.openChildrenArr].filter((item) => item !== index)
-            });
-        } else {
-            this.setState({
-                openChildrenArr: [...this.state.openChildrenArr, index]
-            });
-        }
+        this.setState({
+            openChildren: this.state.openChildren === index ? -1 : index
+        });
     }
 
     _headColStyle = (headTextStyle, item) => {
@@ -140,11 +145,18 @@ export default class Table extends Component {
                             this.creatCol(row, index, head, headItem, _i, otherStyle))}
                     </View>
                 </View>
-                {row.children && this.state.openChildrenArr.includes(index) &&
+                {row.children && this.state.openChildren === index &&
                     this.creatChildren(row, otherStyle)
                 }
             </View>
         )
+    }
+
+    refCol = (colRef, index, _i) => {
+        if (this.befIndex !== index) this.Arr = [];
+        this.befIndex = index;
+        this.Arr[_i] = colRef;
+        this.colRefArr[index] = this.Arr;
     }
 
     // 表单元格
@@ -156,9 +168,7 @@ export default class Table extends Component {
         } = otherStyle;
         const colStyle = {
             width: headItem.width || (headTextStyle && headTextStyle.width) || 100,
-            // height: '100%',
             flex: headItem.flex || 1,
-            ...headItem.bodyColStyle
         }
         return React.createElement(View,
             {
@@ -172,17 +182,20 @@ export default class Table extends Component {
                     : colStyle,
             },
             headItem.render
-                ? <View style={styles.rowItem}
+                ? <View style={{ ...styles.rowItem, ...row.rowBgStyle, ...headItem.bodyColStyle }}
+                    ref={(colRef) => this.refCol(colRef, index, _i)}
                     onLayout={(e) => this.changeViewLayout(e, index, head)}>
                     {headItem.render(row, index)}
                 </View>
                 : <Text
+                    ref={(colRef) => this.refCol(colRef, index, _i)}
+                    onLayout={(e) => this.changeViewLayout(e, index, head)}
                     style={{
                         ...styles.rowItem,
                         ...bodyTextStyle,
-                        ...headItem.bodyColStyle
+                        ...row.rowBgStyle,
+                        ...headItem.bodyColStyle,
                     }}
-                    onLayout={(e) => this.changeViewLayout(e, index, head)}
                 >
                     {row[headItem.id]}
                 </Text>
@@ -215,7 +228,8 @@ export default class Table extends Component {
     _createElement = (head, data, otherStyle) => {
         const {
             bodyStyle,
-            hasBorder
+            hasBorder,
+            bodyTextStyle
         } = otherStyle;
         return React.createElement(View,
             {
@@ -234,10 +248,19 @@ export default class Table extends Component {
                                 {data.map((row, index) => this.creatRow(row, index, head, otherStyle))}
                             </View>
                             : <Text style={hasBorder === 'all'
-                                ? { ...styles.nullText, ...styles.nullTextBorder, ...styles.nullTextBorderOth }
+                                ? {
+                                    ...styles.nullText,
+                                    ...styles.nullTextBorder,
+                                    ...styles.nullTextBorderOth,
+                                    fontSize: bodyTextStyle.fontSize
+                                }
                                 : hasBorder === 'row'
-                                    ? { ...styles.nullText, ...styles.nullTextBorder }
-                                    : styles.nullText
+                                    ? {
+                                        ...styles.nullText,
+                                        ...styles.nullTextBorder,
+                                        fontSize: bodyTextStyle.fontSize
+                                    }
+                                    : { ...styles.nullText, fontSize: bodyTextStyle.fontSize }
                             }>
                                 暂无数据
                             </Text>

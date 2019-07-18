@@ -85,7 +85,7 @@ export default class App extends Component {
         super(props);
         this.state = {
             checked: false,
-            visible: false
+            visible: false,
         }
         this.timer = null;
     }
@@ -127,6 +127,10 @@ export default class App extends Component {
 
     componentWillUnmount = () => {
         clearInterval(this.timer);
+    }
+
+    testClick = (index) => {
+        this.refs.table.clickRow(index);
     }
 
     render() {
@@ -216,28 +220,36 @@ export default class App extends Component {
                 <Text>Table：</Text> */}
                 <Table
                     head={[
-                        { id: 'hldj', name: '护理等级', flex: 1, width: 300 },
+                        { id: 'hldj', name: '护理等级', flex: 1, width: 300, bodyColStyle: { backgroundColor: 'red' } },
                         { id: 'cwhz', name: '床位患者', flex: 5, width: 300 },
                         {
                             id: 'js', name: '计数', flex: 1,
-                            render: (data, index) => <Text onPress={() => this.refs.table.clickRow(index)}>This is a element:{data.js}</Text>
+                            render: (data, index) => <Text onPress={() => this.testClick(index)}>This is a element:{data.js}</Text>
                         },
                     ]}
                     ref="table"
                     data={[
                         {
                             hldj: 1, cwhz: 2, js: 3,
-                            children: <View style={{ height: 300 }}>
+                            children: <View style={{ height: 100 }}>
                                 <Text>子项</Text>
                             </View>
                         },
-                        { hldj: 1, cwhz: 2, js: 3 },
-                        { hldj: 1, cwhz: 2, js: 3 },
+                        {
+                            hldj: 1, cwhz: 2, js: 3, children: <View style={{ height: 100 }}>
+                                <Text>子项</Text>
+                            </View>, rowBgStyle: { color: "#ddd" }
+                        },
+                        {
+                            hldj: 1, cwhz: 2, js: 3, children: <View style={{ height: 100 }}>
+                                <Text>子项</Text>
+                            </View>
+                        },
                     ]}
                     style={{ width: 800, height: 500 }}
                     headTextStyle={{ width: 200 }}
                     bodyStyle={{ backgroundColor: '#fff' }}
-                    bodyRowStyle={{ height: 50 }}
+                    // bodyRowStyle={{ height: 50 }}
                     bodyTextStyle={{ color: '#333' }}
                     hasBorder='all'
                     // evenRowColor="#4ACA6D"
