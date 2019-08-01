@@ -236,12 +236,12 @@ export default class App extends Component {
                             </View>
                         },
                         {
-                            hldj: 1, cwhz: 2, js: 3, children: <View style={{ height: 100 }}>
+                            hldj: 1, cwhz: 2, js: 3, children: <View style={{ height: 90 }}>
                                 <Text>子项</Text>
                             </View>, rowBgStyle: { color: "#ddd" }
                         },
                         {
-                            hldj: 1, cwhz: 2, js: 3, children: <View style={{ height: 100 }}>
+                            hldj: 1, cwhz: 2, js: 3, children: <View style={{ height: 90 }}>
                                 <Text>子项</Text>
                             </View>
                         },
@@ -251,13 +251,13 @@ export default class App extends Component {
                     bodyStyle={{ backgroundColor: '#fff' }}
                     // bodyRowStyle={{ height: 50 }}
                     bodyTextStyle={{ color: '#333' }}
-                    hasBorder='all'
+                    // hasBorder='all'
                     // evenRowColor="#4ACA6D"
                     horizontal />
                 <BaseModal
                     visible={this.state.visible}
                     closeModal={() => this.setState({ visible: false })} />
-                {/* <Message
+                <Message
                     type="error"
                     title="这是标题"
                     content="这是内容"
@@ -275,7 +275,7 @@ export default class App extends Component {
                             textStyle: { color: "#fff" },
                         },
                     ]}
-                /> */}
+                />
             </ScrollView>
         );
     }

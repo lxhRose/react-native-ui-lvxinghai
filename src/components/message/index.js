@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Button from "./../button/index";
+import adap from "./../../utils/adaptation";
 
 export default class Message extends Component {
     constructor(props) {
@@ -86,14 +87,14 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(0,0,0,0.5)",
     },
     content: {
-        borderRadius: 5,
-        padding: 20,
-        width: 400,
-        height: 150,
+        borderRadius: adap.w(20),
+        padding: adap.w(50),
+        width: adap.w(1500),
+        height: adap.h(500),
         backgroundColor: "#fff",
     },
     wrapHead: {
-        height: 20
+        height: adap.h(100)
     },
     head: {
         flex: 1,
@@ -101,11 +102,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     icon: {
-        borderRadius: 16,
-        width: 20,
-        height: 20,
-        lineHeight: 20,
-        fontSize: 16,
+        borderRadius: adap.w(80),
+        width: adap.w(90),
+        height: adap.h(90),
+        lineHeight: adap.h(90),
+        fontSize: adap.font(56),
         textAlign: 'center',
         color: '#fff',
     },
@@ -122,29 +123,30 @@ const styles = StyleSheet.create({
         backgroundColor: '#33cc33'
     },
     title: {
-        paddingLeft: 10,
-        width: 240,
-        fontSize: 16,
-        lineHeight: 20,
+        paddingLeft: adap.w(30),
+        width: adap.w(1300),
+        fontSize: adap.font(56),
+        lineHeight: adap.h(100),
         color: '#333',
     },
     body: {
-        padding: 15,
-        height: 65
+        padding: adap.h(30),
+        paddingTop: adap.h(50),
+        height: adap.h(200)
     },
     bodyText: {
-        fontSize: 14,
-        lineHeight: 20,
+        fontSize: adap.font(42),
+        lineHeight: adap.h(60),
         color: '#333',
     },
     footer: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: "flex-end",
-        height: 25,
+        height: adap.h(100),
     },
     btn: {
-        marginLeft: 5
+        marginLeft: adap.w(40),
     },
 });
 
@@ -164,6 +166,6 @@ Message.defaultProps = {
             borderWidth: 0,
             backgroundColor: "#3B7CFF"
         },
-        textStyle: { color: "#fff" },
+        textStyle: { color: "#fff", fontSize: adap.font(42) },
     }]
 }

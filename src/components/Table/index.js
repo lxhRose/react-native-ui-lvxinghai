@@ -58,7 +58,7 @@ export default class Table extends Component {
         });
         // 设置单元格高度
         this.colRefArr[index].map((item) => {
-            item.setNativeProps({
+            item && item.setNativeProps({
                 style: {
                     height: HeightArr[index]
                 }
@@ -240,11 +240,11 @@ export default class Table extends Component {
                 <View style={{
                     ...styles.body,
                     height: this.state.bodyHeight,
-                    ...bodyStyle
+                    ...bodyStyle,
                 }}>
                     <ScrollView>
                         {data.length > 0
-                            ? <View onLayout={this.changeBodyLayout}>
+                            ? <View onLayout={this.changeBodyLayout} style={{ paddingBottom: borderWidth * 2 }}>
                                 {data.map((row, index) => this.creatRow(row, index, head, otherStyle))}
                             </View>
                             : <Text style={hasBorder === 'all'
@@ -252,15 +252,15 @@ export default class Table extends Component {
                                     ...styles.nullText,
                                     ...styles.nullTextBorder,
                                     ...styles.nullTextBorderOth,
-                                    fontSize: bodyTextStyle.fontSize
+                                    fontSize: bodyTextStyle && bodyTextStyle.fontSize
                                 }
                                 : hasBorder === 'row'
                                     ? {
                                         ...styles.nullText,
                                         ...styles.nullTextBorder,
-                                        fontSize: bodyTextStyle.fontSize
+                                        fontSize: bodyTextStyle && bodyTextStyle.fontSize
                                     }
-                                    : { ...styles.nullText, fontSize: bodyTextStyle.fontSize }
+                                    : { ...styles.nullText, fontSize: bodyTextStyle && bodyTextStyle.fontSize }
                             }>
                                 暂无数据
                             </Text>
