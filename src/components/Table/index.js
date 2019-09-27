@@ -19,12 +19,33 @@ export default class Table extends Component {
             HeightArr: [],
             bodyHeight: HEIGHT,
             openChildren: -1,
+            showModalState: false,
+            modalStyle: null,
+            modalContent: null,
+            _head: [],
+            firstHead: []
         }
         this.rowRefArr = [];
         this.colRefArr = [];
+        this.rowRefArrFirst = [];
+        this.colRefArrFirst = [];
         this.befIndex = -1;
         this.Arr = [];
         this.clickRow = this.clickRow.bind(this);
+        this.showModal = this.showModal.bind(this);
+    }
+
+    showModal = (option) => {
+        if (option) {
+            const { modalStyle, modalContent } = option;
+            this.setState({
+                showModalState: !this.state.showModalState,
+                modalStyle,
+                modalContent
+            });
+        } else { // 关闭
+            this.setState({ showModalState: false });
+        }
     }
 
     changeBodyLayout = (event) => {
@@ -34,6 +55,7 @@ export default class Table extends Component {
     }
 
     changeViewLayout = (event, index, head) => {
+        const { fixedFirst } = this.props;
         const { oldHead, HeightArr } = this.state;
         if (oldHead !== head) { // 不同table，初始化
             this.setState({
@@ -63,7 +85,23 @@ export default class Table extends Component {
                     height: HeightArr[index]
                 }
             });
-        })
+        });
+        if (fixedFirst) {
+            // 设置第一列行高
+            this.rowRefArrFirst[index].setNativeProps({
+                style: {
+                    height: HeightArr[index] + borderWidth,
+                }
+            });
+            // 设置第一列单元格高度
+            this.colRefArrFirst[index].map((item) => {
+                item && item.setNativeProps({
+                    style: {
+                        height: HeightArr[index]
+                    }
+                });
+            });
+        }
     }
 
     clickRow = (index) => {
@@ -101,7 +139,9 @@ export default class Table extends Component {
             },
             <View style={styles.wrap}>
                 {head.map((item, _i) => {
-                    return React.createElement(Text,
+                    let type = typeof item.name === 'string' ? Text : View;
+
+                    return React.createElement(type,
                         {
                             key: item.id,
                             style: hasBorder === 'all'
@@ -120,7 +160,7 @@ export default class Table extends Component {
     }
 
     // 表行
-    creatRow = (row, index, head, otherStyle) => {
+    creatRow = (row, index, head, otherStyle, isFirst) => {
         const {
             bodyRowStyle,
             evenRowColor,
@@ -133,7 +173,12 @@ export default class Table extends Component {
                     ? { ...styles.borderRow } : null
             },
             <View>
-                <View ref={rowRef => { this.rowRefArr[index] = rowRef }}
+                <View
+                    ref={rowRef => {
+                        isFirst
+                            ? this.rowRefArrFirst[index] = rowRef
+                            : this.rowRefArr[index] = rowRef
+                    }}
                     style={{
                         ...styles.Row,
                         ...bodyRowStyle,
@@ -142,37 +187,49 @@ export default class Table extends Component {
                 >
                     <View style={styles.wrap}>
                         {head.map((headItem, _i) =>
-                            this.creatCol(row, index, head, headItem, _i, otherStyle))}
+                            this.creatCol(row, index, head, headItem, _i, otherStyle, isFirst))}
                     </View>
                 </View>
                 {row.children && this.state.openChildren === index &&
-                    this.creatChildren(row, otherStyle)
+                    this.creatChildren(row, otherStyle, isFirst)
                 }
             </View>
         )
     }
 
-    refCol = (colRef, index, _i) => {
+    refCol = (colRef, index, _i, isFirst) => {
         if (this.befIndex !== index) this.Arr = [];
         this.befIndex = index;
         this.Arr[_i] = colRef;
-        this.colRefArr[index] = this.Arr;
+        isFirst
+            ? this.colRefArrFirst[index] = this.Arr
+            : this.colRefArr[index] = this.Arr;
     }
 
     // 表单元格
-    creatCol = (row, index, head, headItem, _i, otherStyle) => {
+    creatCol = (row, index, head, headItem, _i, otherStyle, isFirst) => {
         const {
             headTextStyle,
             bodyTextStyle,
             hasBorder
         } = otherStyle;
         const colStyle = {
-            width: headItem.width || (headTextStyle && headTextStyle.width) || 100,
+            ...styles.rowItem,
+            ...bodyTextStyle,
+            ...row.rowBgStyle,
+            ...headItem.bodyColStyle,
             flex: headItem.flex || 1,
+            width: headItem.width || (headTextStyle && headTextStyle.width) || 100,
         }
-        return React.createElement(View,
+
+        let type = null;
+        headItem.render ? type = View : type = Text;
+
+        return React.createElement(type,
             {
                 key: headItem.id,
+                ref: (colRef) => this.refCol(colRef, index, _i, isFirst),
+                onLayout: (e) => this.changeViewLayout(e, index, head),
                 style: hasBorder === 'all'
                     ? {
                         ...styles.borderCol,
@@ -181,29 +238,12 @@ export default class Table extends Component {
                     }
                     : colStyle,
             },
-            headItem.render
-                ? <View style={{ ...styles.rowItem, ...row.rowBgStyle, ...headItem.bodyColStyle }}
-                    ref={(colRef) => this.refCol(colRef, index, _i)}
-                    onLayout={(e) => this.changeViewLayout(e, index, head)}>
-                    {headItem.render(row, index)}
-                </View>
-                : <Text
-                    ref={(colRef) => this.refCol(colRef, index, _i)}
-                    onLayout={(e) => this.changeViewLayout(e, index, head)}
-                    style={{
-                        ...styles.rowItem,
-                        ...bodyTextStyle,
-                        ...row.rowBgStyle,
-                        ...headItem.bodyColStyle,
-                    }}
-                >
-                    {row[headItem.id]}
-                </Text>
-        )
+            headItem.render ? headItem.render(row, index) : row[headItem.id]
+        );
     }
 
     // 每行的子项
-    creatChildren = (row, otherStyle) => {
+    creatChildren = (row, otherStyle, isFirst) => {
         const {
             childrenStyle,
             hasBorder
@@ -219,18 +259,27 @@ export default class Table extends Component {
                 }
             },
             <ScrollView>
-                {row.children}
+                {!isFirst && row.children}
             </ScrollView>
         )
     }
 
     // 构造表格
-    _createElement = (head, data, otherStyle) => {
+    _createElement = (head, data, otherStyle, isFirst) => {
         const {
             bodyStyle,
             hasBorder,
             bodyTextStyle
         } = otherStyle;
+
+        const {
+            showModalState,
+            modalStyle,
+            modalContent
+        } = this.state;
+
+        const { fixedFirst } = this.props;
+
         return React.createElement(View,
             {
                 style: { flex: 1, flexDirection: 'column' }
@@ -245,30 +294,55 @@ export default class Table extends Component {
                     <ScrollView>
                         {data.length > 0
                             ? <View onLayout={this.changeBodyLayout} style={{ paddingBottom: borderWidth * 2 }}>
-                                {data.map((row, index) => this.creatRow(row, index, head, otherStyle))}
+                                {data.map((row, index) => this.creatRow(row, index, head, otherStyle, isFirst))}
                             </View>
                             : <Text style={hasBorder === 'all'
                                 ? {
                                     ...styles.nullText,
                                     ...styles.nullTextBorder,
                                     ...styles.nullTextBorderOth,
-                                    fontSize: bodyTextStyle && bodyTextStyle.fontSize
+                                    fontSize: bodyTextStyle && bodyTextStyle.fontSize || adap.font(41)
                                 }
                                 : hasBorder === 'row'
                                     ? {
                                         ...styles.nullText,
                                         ...styles.nullTextBorder,
-                                        fontSize: bodyTextStyle && bodyTextStyle.fontSize
+                                        fontSize: bodyTextStyle && bodyTextStyle.fontSize || adap.font(41)
                                     }
-                                    : { ...styles.nullText, fontSize: bodyTextStyle && bodyTextStyle.fontSize }
+                                    : { ...styles.nullText, fontSize: bodyTextStyle && bodyTextStyle.fontSize || adap.font(41) }
                             }>
                                 暂无数据
                             </Text>
                         }
                     </ScrollView>
                 </View>
+                {!fixedFirst && showModalState &&
+                    <View style={{ ...styles.modal, ...modalStyle }}>
+                        {modalContent}
+                    </View>
+                }
             </View >
         )
+    }
+
+    componentDidMount = () => {
+        this.resetHead(this.props);
+    }
+
+    componentWillReceiveProps = (props) => {
+        this.resetHead(props);
+    }
+
+    resetHead = (props) => {
+        const { fixedFirst, head } = props;
+        if (!fixedFirst) return;
+
+        let _head = [...head], firstHead = [];
+        firstHead = _head.splice(0, 1);
+        this.setState({
+            _head,
+            firstHead
+        });
     }
 
     render() {
@@ -284,7 +358,8 @@ export default class Table extends Component {
             bodyTextStyle,
             evenRowColor,
             childrenStyle,
-            hasBorder
+            hasBorder,
+            fixedFirst
         } = this.props;
 
         const otherStyle = {
@@ -298,20 +373,56 @@ export default class Table extends Component {
             hasBorder
         }
 
+        const {
+            _head,
+            firstHead,
+            showModalState,
+            modalStyle,
+            modalContent
+        } = this.state;
+
         return React.createElement(View,
             {
                 style: { ...style }
             },
-            horizontal
-                ? <ScrollView horizontal>
-                    {this._createElement(head, data, otherStyle)}
-                </ScrollView>
-                : this._createElement(head, data, otherStyle)
+            fixedFirst
+                ? <View style={styles.wrapBox}>
+                    <View
+                        style={{
+                            width: firstHead.length > 0 && firstHead[0].width
+                                ? firstHead[0].width
+                                : 100
+                        }}>
+                        {this._createElement(firstHead, data, otherStyle, true)}
+                    </View>
+                    <ScrollView horizontal>
+                        {this._createElement(_head, data, otherStyle, false)}
+                    </ScrollView>
+                    {showModalState &&
+                        <View style={{ ...styles.modal, ...modalStyle }}>
+                            {modalContent}
+                        </View>
+                    }
+                </View>
+                : horizontal
+                    ? <ScrollView horizontal>
+                        {this._createElement(head, data, otherStyle, false)}
+                    </ScrollView>
+                    : this._createElement(head, data, otherStyle, false)
         )
     }
 }
 
 const styles = StyleSheet.create({
+    wrapBox: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    modal: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+    },
     head: {
         height: HEIGHT,
         backgroundColor: '#3B7CFF',
@@ -388,4 +499,5 @@ Table.propTypes = {
     bodyTextStyle: PropTypes.object,
     childrenStyle: PropTypes.object,
     evenRowColor: PropTypes.string,
+    fixedFirst: PropTypes.bool,
 };

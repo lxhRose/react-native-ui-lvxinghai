@@ -8,6 +8,7 @@ import {
     BaseModal,
     Message,
     RNECharts,
+    DatePicker
 } from "./src/index";
 import adap from "./src/utils/adaptation";
 
@@ -86,6 +87,7 @@ export default class App extends Component {
         this.state = {
             checked: false,
             visible: false,
+            text: '全部'
         }
         this.timer = null;
     }
@@ -133,6 +135,37 @@ export default class App extends Component {
         this.refs.table.clickRow(index);
     }
 
+    testSelect = (e) => {
+        // console.log(e.nativeEvent)
+        this.refs.table.showModal({
+            modalStyle: {
+                top: e.nativeEvent.locationY + adap.h(100),
+                left: e.nativeEvent.locationX,
+                borderWidth: 1,
+                borderColor: '#ddd',
+                padding: adap.w(20),
+                backgroundColor: "#fff"
+            },
+            modalContent: <View>
+                <Text style={{
+                    padding: adap.w(10),
+                    fontSize: adap.font(42)
+                }}
+                    onPress={() => this.clckItem('全部')}>全部</Text>
+                <Text style={{
+                    padding: adap.w(10),
+                    fontSize: adap.font(42)
+                }}
+                    onPress={() => this.clckItem('小米')}>小米</Text>
+            </View>
+        });
+    }
+
+    clckItem = (text) => {
+        this.setState({ text });
+        this.refs.table.showModal({ modalStyle: null, modalContent: null })
+    }
+
     render() {
         var option = {
             title: {
@@ -155,6 +188,13 @@ export default class App extends Component {
 
         return (
             <ScrollView style={styles.container}>
+                {/* <Select options={[
+                    { value: 1, name: '全部' },
+                    { value: 2, name: '小莫' },
+                    { value: 3, name: '小莫2' },
+                    { value: 4, name: '小莫3' },
+                ]} onChange={(value) => alert(value)} />
+                <Text>傻子RN</Text> */}
                 {/* <Text>eCharts：</Text>
                 <View style={{
                     width: 200,
@@ -218,46 +258,72 @@ export default class App extends Component {
                     }}
                     radioColor="blue" />
                 <Text>Table：</Text> */}
-                <Table
-                    head={[
-                        { id: 'hldj', name: '护理等级', flex: 1, width: 300, bodyColStyle: { backgroundColor: 'red' } },
-                        { id: 'cwhz', name: '床位患者', flex: 5, width: 300 },
-                        {
-                            id: 'js', name: '计数', flex: 1,
-                            render: (data, index) => <Text onPress={() => this.testClick(index)}>This is a element:{data.js}</Text>
-                        },
-                    ]}
+                {/* <Table
                     ref="table"
+                    head={[
+                        {
+                            id: 'bedNo',
+                            name: <Text onPress={this.testSelect} style={{ fontSize: adap.font(42), color: '#fff' }}>{this.state.text}</Text>,
+                            width: 100
+                        },
+                        { id: 'itemName', name: '操作', flex: 1, render: (data, index) => <Text onPress={() => this.refs.table.clickRow(index)}>展开{data.itemName}</Text> },
+                        { id: 'pname', name: '姓名', flex: 1 },
+                        { id: 'gender', name: '性别', flex: 1 },
+                        { id: 'batch', name: '台次', flex: 1 },
+                        { id: 'batchNo', name: '台号', flex: 1 },
+                        { id: 'opName', name: '手术名称', flex: 1 },
+                        { id: 'doctor', name: '主刀医师', flex: 1 },
+                        { id: 'anesthesia', name: '麻醉方式', flex: 1 },
+                        { id: 'opState', name: '手术状态', flex: 1 },
+                        { id: 'opDate', name: '手术时间', flex: 2 }
+                    ]}
                     data={[
                         {
-                            hldj: 1, cwhz: 2, js: 3,
-                            children: <View style={{ height: 100 }}>
+                            bedNo: "558",
+                            itemName: "0024551",
+                            pname: "洪佑",
+                            gender: "女",
+                            batch: "1",
+                            batchNo: "手术台3",
+                            opName: "阑尾切除",
+                            doctor: "金翠云",
+                            anesthesia: "静脉麻醉",
+                            opState: "进行中",
+                            opDate: "2019-08-02 12:00:00",
+                            date: "2019-08-02",
+                            departno: "-10038",
+                            children: <View style={{ height: 300 }}>
                                 <Text>子项</Text>
                             </View>
                         },
                         {
-                            hldj: 1, cwhz: 2, js: 3, children: <View style={{ height: 90 }}>
-                                <Text>子项</Text>
-                            </View>, rowBgStyle: { color: "#ddd" }
-                        },
-                        {
-                            hldj: 1, cwhz: 2, js: 3, children: <View style={{ height: 90 }}>
+                            bedNo: "558",
+                            itemName: "0024551",
+                            pname: "洪佑",
+                            gender: "女",
+                            batch: "1",
+                            batchNo: "手术台3",
+                            opName: "阑尾切除",
+                            doctor: "金翠云",
+                            anesthesia: "静脉麻醉",
+                            opState: "进行中",
+                            opDate: "2019-08-02 12:00:00",
+                            date: "2019-08-02",
+                            departno: "-10038",
+                            children: <View style={{ height: 300 }}>
                                 <Text>子项</Text>
                             </View>
                         },
                     ]}
-                    style={{ width: 800, height: 500 }}
-                    headTextStyle={{ width: 200 }}
-                    bodyStyle={{ backgroundColor: '#fff' }}
-                    // bodyRowStyle={{ height: 50 }}
-                    bodyTextStyle={{ color: '#333' }}
-                    // hasBorder='all'
-                    // evenRowColor="#4ACA6D"
-                    horizontal />
+                    bodyStyle={{ height: 500 }}
+                    // hasBorder="all"
+                    fixedFirst={true}
+                /> */}
                 <BaseModal
                     visible={this.state.visible}
                     closeModal={() => this.setState({ visible: false })} />
-                <Message
+                <DatePicker defaultDate="2019-09-30" callback={(date) => alert(date)} />
+                {/* <Message
                     type="error"
                     title="这是标题"
                     content="这是内容"
@@ -272,10 +338,10 @@ export default class App extends Component {
                                 borderWidth: 0,
                                 backgroundColor: "#3B7CFF"
                             },
-                            textStyle: { color: "#fff" },
+                            textStyle: { color: "#fff", fontSize: adap.font(42) },
                         },
                     ]}
-                />
+                /> */}
             </ScrollView>
         );
     }

@@ -103,9 +103,9 @@ const styles = StyleSheet.create({
     },
     icon: {
         borderRadius: adap.w(80),
-        width: adap.w(90),
-        height: adap.h(90),
-        lineHeight: adap.h(90),
+        width: adap.w(80),
+        height: adap.h(80),
+        lineHeight: adap.h(75),
         fontSize: adap.font(56),
         textAlign: 'center',
         color: '#fff',
@@ -161,9 +161,10 @@ Message.propTypes = {
 Message.defaultProps = {
     type: 'info',
     option: [{
-        text: 'ok',
+        text: '确定',
         style: {
             borderWidth: 0,
+            height: adap.h(80),
             backgroundColor: "#3B7CFF"
         },
         textStyle: { color: "#fff", fontSize: adap.font(42) },
