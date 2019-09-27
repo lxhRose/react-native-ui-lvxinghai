@@ -309,6 +309,8 @@ props:
 
 DatePicker（日期选择器）
 --
+![RNECharts-img](https://github.com/lxhRose/react-native-ui-lvxinghai/blob/master/image/DatePicker.png)
+
 ```js
 <DatePicker defaultDate="2019-09-30" callback={(date) => alert(date)} />
 ```
