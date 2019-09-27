@@ -17,6 +17,7 @@ react-native-ui-lvxinghai
 5、[BaseModal（基础模态框）](#BaseModal基础模态框)  
 6、[Message（带图标的消息提示框）](#Message带图标的消息提示框)   
 7、[RNECharts（对echarts的封装）](#RNECharts对echarts的封装)  
+7、[DatePicker（日期选择器）](#DatePicker日期选择器)  
    
   
 Radio（单选按钮）  
@@ -303,5 +304,19 @@ props:
 * option（object），必选。echarts的配置，请参照[ECharts 配置项](https://echarts.baidu.com/option.html#title)   
 * width（number），可选。图表宽度；
 * height（number），可选。图表高度；
-* backgroundColor（string），可选。背景色。
+* backgroundColor（string），可选。背景色。  
+
+
+DatePicker（日期选择器）
+--
+```js
+<DatePicker defaultDate="2019-09-30" callback={(date) => alert(date)} />
+```
+props:
+* callback（func），必选。返回选中日期的函数，返回值为 yyyy-MM-dd格式的日期字符串。   
+* defaultDate（string），可选。选择器的默认日期（yyyy-MM-dd格式的日期字符串），为空时，默认为今天。
+* style（object），可选。外层样式。  
+* imgStyle（object），可选。图标样式。  
+* textStyle（object），可选。文字样式。
+
 
