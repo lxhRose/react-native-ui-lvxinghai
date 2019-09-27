@@ -17,7 +17,7 @@ react-native-ui-lvxinghai
 5、[BaseModal（基础模态框）](#BaseModal基础模态框)  
 6、[Message（带图标的消息提示框）](#Message带图标的消息提示框)   
 7、[RNECharts（对echarts的封装）](#RNECharts对echarts的封装)  
-7、[DatePicker（日期选择器）](#DatePicker日期选择器)  
+8、[DatePicker（日期选择器）](#DatePicker日期选择器)  
    
   
 Radio（单选按钮）  
