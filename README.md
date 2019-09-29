@@ -192,6 +192,7 @@ props：
 * visible（bool）：可选。控制模态框的显示隐藏；  
 * closeModal（func）：可选。关闭模态框的函数，点击右上角的关闭按钮时触发；  
 * hideCloseBtn（bool）：可选。隐藏自带的关闭按钮；  
+* style(object)：可选。设置样式；  
 * children（any）：可选。子元素，即要在模态框中显示的内容，例如  
 ```js
 <BaseModal><Text>这是一个基础模态框</Text><BaseModal>
