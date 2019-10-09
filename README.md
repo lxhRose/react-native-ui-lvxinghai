@@ -313,7 +313,10 @@ DatePicker（日期选择器）
 ![RNECharts-img](https://github.com/lxhRose/react-native-ui-lvxinghai/blob/master/image/DatePicker.png)
 
 ```js
-<DatePicker defaultDate="2019-09-30" callback={(date) => alert(date)} />
+<DatePicker defaultDate="2019-09-30" ref="DatePicker" callback={(date) => alert(date)} />
+<Button
+    text="设置日期选择器的值"
+    onPress={() => this.refs.DatePicker.setValue('2019-10-16')} />
 ```
 props:
 * callback（func），必选。返回选中日期的函数，返回值为 yyyy-MM-dd格式的日期字符串。   
@@ -321,5 +324,6 @@ props:
 * style（object），可选。外层样式。  
 * imgStyle（object），可选。图标样式。  
 * textStyle（object），可选。文字样式。
+* ref: 另外预留了一个setValue方法供外部调用，设置日期选择器的值。
 
 
