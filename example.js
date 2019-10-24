@@ -8,7 +8,8 @@ import {
     BaseModal,
     Message,
     RNECharts,
-    DatePicker
+    DatePicker,
+    DatePickerMonth
 } from "./src/index";
 import adap from "./src/utils/adaptation";
 
@@ -187,78 +188,91 @@ export default class App extends Component {
         };
 
         return (
-            <ScrollView style={styles.container}>
-                {/* <Select options={[
+            <View style={styles.container}>
+                <ScrollView>
+                    {/* <Select options={[
                     { value: 1, name: '全部' },
                     { value: 2, name: '小莫' },
                     { value: 3, name: '小莫2' },
                     { value: 4, name: '小莫3' },
                 ]} onChange={(value) => alert(value)} />
                 <Text>傻子RN</Text> */}
-                {/* <Text>eCharts：</Text>
-                <View style={{
-                    width: 200,
-                    height: 200,
-                    backgroundColor: '#ddd'
-                }}>
-                    <RNECharts
-                        ref="charts"
-                        width={200}
-                        height={200}
-                        option={option2} />
-                </View>
-                <Text>RadioGroup：</Text>
-                <RadioGroup
-                    onChange={(id) => { }}
-                    option={[
-                        [
-                            {
-                                id: '1',
-                                label: '不处理',
-                                style: {
-                                    height: 70,
-                                    lineHeight: 70,
-                                    fontSize: 20,
-                                    color: '#333'
+                    <DatePicker ref="DatePicker" value='2019-10-09' callback={(date) => alert(date)} />
+                    <Text>eCharts：</Text>
+                    <View style={{
+                        width: 200,
+                        height: 200,
+                        backgroundColor: '#ddd'
+                    }}>
+                        <RNECharts
+                            ref="charts"
+                            width={200}
+                            height={200}
+                            option={option2} />
+                    </View>
+                    <Text>DatePickerMonth:</Text>
+                    <DatePickerMonth callback={(str) => { }} />
+                    <Text>RadioGroup：</Text>
+                    <RadioGroup
+                        onChange={(id) => { }}
+                        option={[
+                            [
+                                {
+                                    id: '1',
+                                    label: '不处理',
+                                    style: {
+                                        height: 70,
+                                        lineHeight: 70,
+                                        fontSize: 20,
+                                        color: '#333'
+                                    },
+                                    radioColor: "blue"
                                 },
-                                radioColor: "blue"
-                            },
-                            { id: '2', label: '继续观察' },
-                        ], [
-                            { id: '3', label: '已处理' },
-                            { id: '4', label: '慢性变化无需处理' },
-                        ]
-                    ]}
-                    style={{
-                        padding: 20,
-                        width: 300,
-                        height: 100,
-                    }} />
-                <Text>Button：</Text>
-                <Button
-                    text="确认"
-                    onPress={() => { }}
-                    style={styles.btnStyle}
-                    textStyle={styles.btnTextStyle} />
-                <Button
-                    text="确认" />
-                <Text>Radio：</Text>
-                <Radio
-                    defaultChecked={false}
-                    id='radio'
-                    onChange={(checked) => {
-                        // alert(checked)
-                    }}
-                    label="单选按钮"
-                    style={{
-                        height: 70,
-                        lineHeight: 70,
-                        fontSize: 20,
-                        color: '#333'
-                    }}
-                    radioColor="blue" />
-                <Text>Table：</Text> */}
-                {/* <Table
+                                { id: '2', label: '继续观察' },
+                            ], [
+                                { id: '3', label: '已处理' },
+                                { id: '4', label: '慢性变化无需处理' },
+                            ]
+                        ]}
+                        style={{
+                            padding: 20,
+                            width: 300,
+                            height: 100,
+                        }} />
+                    <Text>Button：</Text>
+                    <Button
+                        text="确认"
+                        onPress={() => this.refs.DatePicker.setValue('2019-10-16')}
+                        style={styles.btnStyle}
+                        textStyle={styles.btnTextStyle} />
+                    <Button
+                        text="确认" />
+                    <Text>Radio：</Text>
+                    <Radio
+                        defaultChecked={false}
+                        id='radio'
+                        onChange={(checked) => {
+                            // alert(checked)
+                        }}
+                        label="单选按钮"
+                        style={{
+                            height: 70,
+                            lineHeight: 70,
+                            fontSize: 20,
+                            color: '#333'
+                        }}
+                        radioColor="blue" />
+                    <Text>Table：</Text>
+                    <Table
+                        head={[
+                            { id: 'col0', name: '麻醉方式', flex: 1 },
+                            { id: 'col1', name: '手术状态', flex: 1 },
+                            { id: 'col2', name: '手术时间', flex: 2 }
+                        ]}
+                        data={[]}
+                        fixedFirst={true}
+                    />
+                    {/* <Table
                     ref="table"
                     head={[
                         {
@@ -315,15 +329,11 @@ export default class App extends Component {
                             </View>
                         },
                     ]}
-                    bodyStyle={{ height: 500 }}
+                    // bodyStyle={{ height: 500 }}
                     // hasBorder="all"
                     fixedFirst={true}
                 /> */}
-                <BaseModal
-                    visible={this.state.visible}
-                    closeModal={() => this.setState({ visible: false })} />
-                <DatePicker defaultDate="2019-09-30" callback={(date) => alert(date)} />
-                {/* <Message
+                    {/* <Message
                     type="error"
                     title="这是标题"
                     content="这是内容"
@@ -342,7 +352,12 @@ export default class App extends Component {
                         },
                     ]}
                 /> */}
-            </ScrollView>
+                </ScrollView>
+                <BaseModal
+                    visible={this.state.visible}
+                    closeModal={() => this.setState({ visible: false })}
+                    children={<Text>yes</Text>} />
+            </View>
         );
     }
 }

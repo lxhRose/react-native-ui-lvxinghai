@@ -6,6 +6,7 @@ import BaseModal from "./components/modal/index";
 import Message from "./components/message/index";
 import RNECharts from "./components/chart/chartComponent";
 import DatePicker from "./components/DatePicker/index";
+import DatePickerMonth from "./components/DatePickerMonth/index";
 
 module.exports = {
     RadioGroup,
@@ -15,5 +16,6 @@ module.exports = {
     BaseModal,
     Message,
     RNECharts,
-    DatePicker
+    DatePicker,
+    DatePickerMonth
 }

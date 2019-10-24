@@ -1,83 +1,25 @@
 const DateFormat = {
-    getTodayTimeStr() {
-        let myDate = new Date();
-        return DateFormat.format(myDate, true);
+    _getMonth(str, isAdd) {
+        let myDate = str ? new Date(str) : new Date();
+        let month = myDate.getMonth();
+        myDate.setMonth(isAdd ? (month + 1) : (month - 1));
+        return this.Format('yyyy-MM', myDate);
     },
-    getToday() { // 今天
-        let myDate = new Date();
-        return DateFormat.format(myDate);
-    },
-    getToday2() { // 今天  yyyy-MM-dd
-        let myDate = new Date();
-        return DateFormat.format(myDate, false, true);
-    },
-    getWeek() {
-        let myDate = new Date();
-        let str = '星期';
-        switch (myDate.getDay()) {
-            case 0: str = str + '日'; break;
-            case 1: str = str + '一'; break;
-            case 2: str = str + '二'; break;
-            case 3: str = str + '三'; break;
-            case 4: str = str + '四'; break;
-            case 5: str = str + '五'; break;
-            case 6: str = str + '六'; break;
-        }
-        return str;
-    },
-    getTime() {
-        let myDate = new Date();
-        let hours = DateFormat.lowTen(myDate.getHours());
-        let minutes = DateFormat.lowTen(myDate.getMinutes());
-        return `${hours}:${minutes}`;
-    },
-    getYesterday() { // 昨天
-        let myDate = new Date();
-        myDate.setDate(myDate.getDate() - 1);
-
-        return DateFormat.format(myDate);
-    },
-    getNowWeek() { //获取本周
-        let myDate = new Date();
-        let todayStr = DateFormat.format(myDate);
-        let day = myDate.getDay();
-        if (day === 0) { // 星期天
-            myDate.setDate(myDate.getDate() - 6); // 周一
-        } else {
-            myDate.setDate(myDate.getDate() - day + 1); // 周一
-        }
-        let startStr = DateFormat.format(myDate);
-        return [startStr, todayStr];
-    },
-    getNowMonth() { // 本月
-        let myDate = new Date();
-        let todayStr = DateFormat.format(myDate);
-        myDate.setDate(1); // 从本月一号开始
-        let startStr = DateFormat.format(myDate);
-        return [startStr, todayStr];
-    },
-    getNowYear() { // 全年
-        let myDate = new Date();
-        let todayStr = DateFormat.format(myDate);
-        myDate.setMonth(0, 1); // 从本年一月一号开始
-        let startStr = DateFormat.format(myDate);
-        return [startStr, todayStr];
-    },
-    format(myDate, needTime = false, type = false) {
-        let year = myDate.getFullYear();
-        let month = DateFormat.lowTen(myDate.getMonth() + 1);
-        let date = DateFormat.lowTen(myDate.getDate());
-        let hours = DateFormat.lowTen(myDate.getHours());
-        let minutes = DateFormat.lowTen(myDate.getMinutes());
-        let seconds = DateFormat.lowTen(myDate.getSeconds());
-
-        if (needTime) {
-            return `${year}-${month}-${date}  ${hours}:${minutes}:${seconds}`;
-        } else if (type) {
-            return `${year}-${month}-${date}`;
-        } else {
-            return `${year}年${month}月${date}日`;
-        }
+    Format(s = 'yyyy-MM-dd', obj = new Date()) {
+        let _s = s; // 必须新定义一个变量来接收结果
+        let Arr = [
+            { id: 'yyyy', num: s.indexOf('yyyy') > -1 ? this.lowTen(obj.getFullYear()) : '' },
+            { id: 'MM', num: s.indexOf('MM') > -1 ? this.lowTen(obj.getMonth() + 1) : '' },
+            { id: 'dd', num: s.indexOf('dd') > -1 ? this.lowTen(obj.getDate()) : '' },
+            { id: 'hh', num: s.indexOf('hh') > -1 ? this.lowTen(obj.getHours()) : '' },
+            { id: 'mm', num: s.indexOf('mm') > -1 ? this.lowTen(obj.getMinutes()) : '' },
+            { id: 'ss', num: s.indexOf('ss') > -1 ? this.lowTen(obj.getSeconds()) : '' },
+        ];
+        Arr.map((item) => {
+            if (item.num != '')
+                _s = _s.replace(item.id, `${item.num}`);
+        });
+        return _s;
     },
     lowTen(value) { // 对小于10 的数处理+0
         return value < 10 ? '0' + value.toString() : value.toString();

@@ -3,8 +3,9 @@ import {
     Text,
     DatePickerAndroid,
     StyleSheet,
-    TouchableOpacity,
-    Image
+    TouchableNativeFeedback,
+    Image,
+    View
 } from 'react-native';
 import PropTypes from 'prop-types';
 import adap from "./../../utils/adaptation";
@@ -16,6 +17,13 @@ export default class DatePicker extends Component {
         this.state = {
             date: props.defaultDate
         }
+        this.setValue = this.setValue.bind(this);
+    }
+
+    setValue = (date) => {
+        this.setState({
+            date: date
+        });
     }
 
     showDatePicker = async () => {
@@ -27,7 +35,7 @@ export default class DatePicker extends Component {
             if (action !== DatePickerAndroid.dismissedAction) {
                 // 这里开始可以处理用户选好的年月日三个参数：year, month (0-11), day
                 this.setState({
-                    date: DateFormat.format(new Date(year, month, day), false, true)
+                    date: DateFormat.Format('yyyy-MM-dd', new Date(year, month, day))
                 }, () => {
                     this.props.callback(this.state.date);
                 });
@@ -39,7 +47,7 @@ export default class DatePicker extends Component {
 
     render() {
         const {
-            date,
+            date
         } = this.state;
 
         const {
@@ -48,23 +56,19 @@ export default class DatePicker extends Component {
             textStyle
         } = this.props;
 
-        return React.createElement(TouchableOpacity,
-            {
-                style: { ...styles.dateBtn, ...style },
-                onPress: this.showDatePicker
-            },
-            <>
+        return React.createElement(TouchableNativeFeedback,
+            { onPress: this.showDatePicker },
+            <View style={{ ...styles.dateBtn, ...style }}>
                 <Image style={{ ...styles.img, ...imgStyle }}
                     source={require('./../../images/date.png')}></Image>
                 <Text style={{ ...styles.dateText, ...textStyle }}>{date}</Text>
-            </>
+            </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
     dateBtn: {
-        flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -89,5 +93,5 @@ DatePicker.propTypes = {
     textStyle: PropTypes.object,
 };
 DatePicker.defaultProps = {
-    defaultDate: DateFormat.getToday2(),
+    defaultDate: DateFormat.Format('yyyy-MM-dd'),
 }

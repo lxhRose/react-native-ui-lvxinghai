@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {
-    TouchableOpacity,
+    TouchableNativeFeedback,
     Text,
+    View,
     StyleSheet
 } from 'react-native';
 import PropTypes from 'prop-types';
+import adap from "./../../utils/adaptation";
 
 export default class Button extends Component {
     constructor(props) {
@@ -29,41 +31,41 @@ export default class Button extends Component {
             ...this.props.textStyle,
         };
 
-        return React.createElement(TouchableOpacity,
+        return React.createElement(TouchableNativeFeedback,
             {
                 onPress: this.props.onPress,
                 disabled: this.props.disabled,
                 onLayout: this.changeViewLayout,
-                activeOpacity: 0.7,
-                style: this.props.disabled
-                    ? { ...btnStyle, ...styles.disabledStyle }
-                    : { height: 25, ...btnStyle }
             },
-            <Text style={
-                this.props.disabled
-                    ? { ...textStyle, ...styles.disabledTextStyle }
-                    : textStyle
-            }>
-                {this.props.text}
-            </Text>
+            <View style={this.props.disabled
+                ? { ...btnStyle, ...styles.disabledStyle }
+                : { height: adap.h(90), ...btnStyle }}>
+                <Text style={
+                    this.props.disabled
+                        ? { ...textStyle, ...styles.disabledTextStyle }
+                        : textStyle
+                }>
+                    {this.props.text}
+                </Text>
+            </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
     button: {
-        borderRadius: 5,
-        borderWidth: 1,
+        borderRadius: adap.w(20),
+        borderWidth: adap.w(3),
         borderColor: '#ddd',
-        paddingRight: 15,
-        paddingLeft: 15,
+        paddingRight: adap.w(40),
+        paddingLeft: adap.w(40),
     },
     disabledStyle: {
         borderColor: '#eee',
         backgroundColor: "#eee"
     },
     text: {
-        fontSize: 14,
+        fontSize: adap.font(42),
         textAlign: 'center',
         color: '#333',
     },

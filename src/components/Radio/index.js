@@ -3,7 +3,7 @@ import {
     Text,
     StyleSheet,
     View,
-    TouchableOpacity
+    TouchableNativeFeedback
 } from 'react-native';
 import adap from './../../utils/adaptation';
 import PropTypes from 'prop-types';
@@ -62,38 +62,40 @@ export default class Radio extends Component {
         } = this.props;
         const { labelFlex, checked } = this.state;
 
-        return React.createElement(TouchableOpacity,
+        return React.createElement(View,
             {
                 ref: rowRef => { this.rowRef = rowRef },
                 style: { ...styles.RadioWrap, ...style },
-                onPress: this.onChecked
+
             },
-            <View style={{ flex: 1, flexDirection: "row" }}>
-                <View style={{ flex: 1 }}>
-                    <View style={{
-                        ...styles.Radio,
-                        marginTop: (style && (style.lineHeight - style.fontSize) / 2) || adap.w(7),
-                        width: (style && style.fontSize) || RADIO_WIDTH,
-                        height: (style && style.fontSize) || RADIO_WIDTH,
-                        borderColor: radioColor || (style && style.color) || COLOR
-                    }}>
-                        {(groupCheckedId && groupCheckedId !== id) ? false : checked
-                            && <Text style={{
-                                ...styles.circle,
-                                backgroundColor: radioColor || (style && style.color) || COLOR
-                            }}></Text>
-                        }
+            <TouchableNativeFeedback onPress={this.onChecked}>
+                <View style={{ flex: 1, flexDirection: "row" }}>
+                    <View style={{ flex: 1 }}>
+                        <View style={{
+                            ...styles.Radio,
+                            marginTop: (style && (style.lineHeight - style.fontSize) / 2) || adap.w(7),
+                            width: (style && style.fontSize) || RADIO_WIDTH,
+                            height: (style && style.fontSize) || RADIO_WIDTH,
+                            borderColor: radioColor || (style && style.color) || COLOR
+                        }}>
+                            {(groupCheckedId && groupCheckedId !== id) ? false : checked
+                                && <Text style={{
+                                    ...styles.circle,
+                                    backgroundColor: radioColor || (style && style.color) || COLOR
+                                }}></Text>
+                            }
+                        </View>
+                    </View>
+                    <View style={{ flex: labelFlex }}>
+                        <Text style={{
+                            ...styles.label,
+                            fontSize: (style && style.fontSize) || adap.font(50),
+                            lineHeight: (style && style.lineHeight) || adap.font(70),
+                            color: (style && style.color) || COLOR
+                        }}>{label}</Text>
                     </View>
                 </View>
-                <View style={{ flex: labelFlex }}>
-                    <Text style={{
-                        ...styles.label,
-                        fontSize: (style && style.fontSize) || adap.font(50),
-                        lineHeight: (style && style.lineHeight) || adap.font(70),
-                        color: (style && style.color) || COLOR
-                    }}>{label}</Text>
-                </View>
-            </View>
+            </TouchableNativeFeedback>
         )
     }
 }

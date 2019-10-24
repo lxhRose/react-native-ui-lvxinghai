@@ -5,7 +5,8 @@
     "main": "src/index.js",
     "scripts": {
         "start": "node node_modules/react-native/local-cli/cli.js start",
-        "test": "jest"
+        "test": "jest",
+        "dev": "react-native run-android"
     },
     "repository": {
         "type": "git",

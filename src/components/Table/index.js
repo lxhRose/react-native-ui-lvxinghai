@@ -39,7 +39,7 @@ export default class Table extends Component {
         if (option) {
             const { modalStyle, modalContent } = option;
             this.setState({
-                showModalState: !this.state.showModalState,
+                showModalState: true,
                 modalStyle,
                 modalContent
             });
@@ -79,7 +79,7 @@ export default class Table extends Component {
             }
         });
         // 设置单元格高度
-        this.colRefArr[index].map((item) => {
+        (this.colRefArr[index] || []).map((item) => {
             item && item.setNativeProps({
                 style: {
                     height: HeightArr[index]
@@ -94,7 +94,7 @@ export default class Table extends Component {
                 }
             });
             // 设置第一列单元格高度
-            this.colRefArrFirst[index].map((item) => {
+            (this.colRefArrFirst[index] || []).map((item) => {
                 item && item.setNativeProps({
                     style: {
                         height: HeightArr[index]
@@ -296,23 +296,11 @@ export default class Table extends Component {
                             ? <View onLayout={this.changeBodyLayout} style={{ paddingBottom: borderWidth * 2 }}>
                                 {data.map((row, index) => this.creatRow(row, index, head, otherStyle, isFirst))}
                             </View>
-                            : <Text style={hasBorder === 'all'
-                                ? {
-                                    ...styles.nullText,
-                                    ...styles.nullTextBorder,
-                                    ...styles.nullTextBorderOth,
-                                    fontSize: bodyTextStyle && bodyTextStyle.fontSize || adap.font(41)
-                                }
-                                : hasBorder === 'row'
-                                    ? {
-                                        ...styles.nullText,
-                                        ...styles.nullTextBorder,
-                                        fontSize: bodyTextStyle && bodyTextStyle.fontSize || adap.font(41)
-                                    }
-                                    : { ...styles.nullText, fontSize: bodyTextStyle && bodyTextStyle.fontSize || adap.font(41) }
-                            }>
-                                暂无数据
-                            </Text>
+                            : fixedFirst
+                                ? isFirst
+                                    ? this.creatNullBox(bodyTextStyle, hasBorder)
+                                    : null
+                                : this.creatNullBox(bodyTextStyle, hasBorder)
                         }
                     </ScrollView>
                 </View>
@@ -322,6 +310,26 @@ export default class Table extends Component {
                     </View>
                 }
             </View >
+        )
+    }
+
+    creatNullBox = (bodyTextStyle, hasBorder) => {
+        return (
+            <Text style={hasBorder === 'all'
+                ? {
+                    ...styles.nullText,
+                    ...styles.nullTextBorder,
+                    ...styles.nullTextBorderOth,
+                    fontSize: bodyTextStyle && bodyTextStyle.fontSize || adap.font(41)
+                }
+                : hasBorder === 'row'
+                    ? {
+                        ...styles.nullText,
+                        ...styles.nullTextBorder,
+                        fontSize: bodyTextStyle && bodyTextStyle.fontSize || adap.font(41)
+                    }
+                    : { ...styles.nullText, fontSize: bodyTextStyle && bodyTextStyle.fontSize || adap.font(41) }
+            }>暂无数据</Text>
         )
     }
 

@@ -3,27 +3,35 @@ import {
     Text,
     StyleSheet,
     View,
-    TouchableOpacity
+    TouchableNativeFeedback
 } from 'react-native';
 import adap from './../../utils/adaptation';
 import PropTypes from 'prop-types';
 
 export default class BaseModal extends Component {
     render() {
-        if (this.props.visible) {
-            return React.createElement(View, { style: styles.content },
+        const {
+            visible,
+            hideCloseBtn,
+            closeModal,
+            children,
+            style
+        } = this.props;
+
+        if (visible) {
+            return React.createElement(View, { style: { ...styles.content, ...style } },
                 <>
-                    {!this.props.hideCloseBtn &&
-                        <TouchableOpacity
-                            onPress={this.props.closeModal}
-                            style={styles.closeButton}
-                            activeOpacity={0.7}
+                    {!hideCloseBtn &&
+                        <TouchableNativeFeedback
+                            onPress={closeModal}
                         >
-                            <Text style={styles.text}>×</Text>
-                        </TouchableOpacity>
+                            <View style={styles.closeButton}>
+                                <Text style={styles.text}>×</Text>
+                            </View>
+                        </TouchableNativeFeedback>
                     }
                     <View>
-                        {this.props.children}
+                        {children}
                     </View>
                 </>
             );
@@ -68,4 +76,5 @@ BaseModal.propTypes = {
     closeModal: PropTypes.func,
     hideCloseBtn: PropTypes.bool,
     children: PropTypes.any,
+    style: PropTypes.object,
 };
