@@ -178,7 +178,8 @@ import { Table } from "react-native-ui-lvxinghai";
   * ref: 另外预留了一个clickRow方法供外部调用，以展开每行的子项。例如：this.refs.table.clickRow(index)；showModal方法显示一个相对table绝对定位的内容块，this.refs.table.showModal(option),option={modalStyle: {/*样式，可以控制内容块位置和样式*/}, modalContent: {/*要显示的内容*/}}，当不传参数时（this.refs.table.showModal()）为关闭。    
   * childrenStyle（obj）：可选。设置子项包裹框样式。    
   * hasBorder(oneOf(['row', 'all']))；可选。指定是否需要border，以及行border（'row'）还是行列都需要('all')。  
-  * fixedFirst（bool）：可选。是否需要第一列固定，之后的列横向滚动。第一列宽度默认为100px，可以通过给表头第一个元素的width属性赋值来设置。
+  * fixedFirst（bool）：可选。是否需要第一列固定，之后的列横向滚动。第一列宽度默认为100px，可以通过给表头第一个元素的width属性赋值来设置。  
+  * scrollFunc（func）：可选。开始滚动时触发（ScrollView 的 onScrollBeginDrag 事件）。
   
   
 BaseModal（基础模态框）  
